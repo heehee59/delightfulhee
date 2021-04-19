@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: delightfulhee
+Bundle-SymbolicName: delightfulhee
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-15
+Automatic-Module-Name: delightfulhee
+Export-Package: com.dh,
+ com.dh.handler,
+ com.dh.model,
+ com.dh.repository,
+ com.dh.test
