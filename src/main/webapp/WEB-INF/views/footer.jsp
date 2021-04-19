@@ -13,6 +13,7 @@ a:visited {text-decoration: none; color: black;}
 a:active {text-decoration: none; color: black;}
 body {
 	font-family:'LotteMartDream';
+	font-size:12.5px;
 }
 .line {
 	width:1000px;
@@ -45,6 +46,7 @@ body {
 		<li><a href="mailto:mchell9999@gmail.com" target="_blank"><img src="resources\images\mail.png"></a></li>
 		<li><a href="http://github.com/heehee59/" target="_blank"><img src="resources\images\git.png"></a></li>
 		<li><a href="http://instagram.com/love_is_hee/" target="_blank"><img src="resources\images\instagram.png"></a></li>
+		<li><a href="http://blog.naver.com/heee_pp/" target="_blank"><img src="resources\images\blog.png"></a></li>
 	</ul>
 </div>
 </body>

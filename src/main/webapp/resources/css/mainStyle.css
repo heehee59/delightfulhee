@@ -3,9 +3,6 @@ a:hover {text-decoration: none; color: black;}
 a:link {text-decoration: none; color: black;}
 a:visited {text-decoration: none; color: black;}
 a:active {text-decoration: none; color: black;}
-body {
-	overflow:hidden;
-}
 .logo-holder {
 	text-align:center;
 	margin-top:30px;
@@ -14,13 +11,15 @@ body {
 	display:inline-block;
 }
 .navbar {
-	margin-bottom:none;
-	background:white;
-	width:290px;
+	position:fixed;
 	float:left;
+	width:290px;
+	overflow:hidden;
+	background:white;
+	color:#2f2f2f;
 	font-size:12px;
 	font-weight:bold;
-	color:#2f2f2f;
+	margin-bottom:none;
 }
 .nav {
 	margin-top:40px;
@@ -59,8 +58,11 @@ hr.liline {
 	src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
 }
 section {
-	background:#f7f7f7;
+	background:#FFFBF5;
 	overflow:hidden;
+	float:right;
+	width:90%;
+	height:100%;
 }
 section .container {
 	background:#FFFBF5;
@@ -71,4 +73,24 @@ section .container-title {
 	font-size:50px;
 	line-height:70px;
 	margin-left:180px;
+}
+section .container-content {
+	font-family:'LotteMartDream';
+	font-size:18px;
+	margin-left:180px;
+	line-height:22px;
+}
+section .container-content2 {
+	font-family:'LotteMartDream';
+	font-size:18px;
+	margin-left:180px;
+	margin-bottom:150px;
+	line-height:22px;
+}
+.middle-line {
+	width:1000px;
+	margin-top:150px;
+	margin-bottom:150px;
+	margin-left:180px;
+	background-color:black;
 }
