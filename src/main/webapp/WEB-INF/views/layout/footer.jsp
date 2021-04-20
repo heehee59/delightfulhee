@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Delightfulhee</title>
 <style>
 a {text-decoration: none;}
@@ -15,17 +15,17 @@ body {
 	font-family:'LotteMartDream';
 	font-size:12.5px;
 }
-.line {
-	width:1000px;
-	margin-top:50px;
-	margin-bottom:50px;
-	margin-left:180px;
-	background-color:black;
+.wraper {
+	display:flex;
+	text-align:center;
+	justify-content:center;
 }
 .contentpane {
-	padding-left:180px;
+	width:1100px;
 	padding-bottom:100px;
 	line-height:30px;
+	justify-content:flex-start;
+	text-align:left;
 }
 .contact li {
 	float:left;
@@ -38,16 +38,17 @@ body {
 </style>
 </head>
 <body>
-<hr class="line">
+<div class="wraper">
 <div class="contentpane">
 	Delightfulhee ㅣ 엄희경 ㅣ <a href="#">개인정보처리방침</a><br>
 	COPYRIGHT @ 2021 DELIGHTFULHEE ALL RIGHTS RESERVED.<br>
 	<ul class="contact">
-		<li><a href="mailto:mchell9999@gmail.com" target="_blank"><img src="resources\images\mail.png"></a></li>
-		<li><a href="http://github.com/heehee59/" target="_blank"><img src="resources\images\git.png"></a></li>
-		<li><a href="http://instagram.com/love_is_hee/" target="_blank"><img src="resources\images\instagram.png"></a></li>
-		<li><a href="http://blog.naver.com/heee_pp/" target="_blank"><img src="resources\images\blog.png"></a></li>
+		<li><a href="mailto:mchell9999@gmail.com" target="_blank"><img src="/delightfulhee/resources\images\mail.png"></a></li>
+		<li><a href="http://github.com/heehee59/" target="_blank"><img src="/delightfulhee/resources\images\git.png"></a></li>
+		<li><a href="http://instagram.com/love_is_hee/" target="_blank"><img src="/delightfulhee/resources\images\instagram.png"></a></li>
+		<li><a href="http://blog.naver.com/heee_pp/" target="_blank"><img src="/delightfulhee/resources\images\blog.png"></a></li>
 	</ul>
+</div>
 </div>
 </body>
 </html>
