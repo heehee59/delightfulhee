@@ -1,4 +1,4 @@
-package com.dh.model;
+package com.dh.web.model;
 
 public enum LevelType {
 	

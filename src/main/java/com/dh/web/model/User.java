@@ -1,4 +1,4 @@
-package com.dh.model;
+package com.dh.web.model;
 
 import java.sql.Timestamp;
 
@@ -30,6 +30,9 @@ public class User {
 	
 	@Column(nullable=false,length=30, unique=true)
 	private String username;	// 아이디
+	
+	@Column(nullable=false,length=30)
+	private String nickname;
 	
 	@Column(nullable=false,length=100)
 	private String password;

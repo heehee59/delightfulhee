@@ -1,20 +1,15 @@
-package com.dh.model;
+package com.dh.web.model;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
@@ -27,29 +22,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Board {
+public class Reply {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)	// auto_increment
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@ManyToOne(fetch=FetchType.EAGER)	// Many = Board, User = One
+	@ManyToOne
 	@JoinColumn(name="userid")
 	private User user;
 	
-	@Column(nullable=false, length=100)
-	private String title;
-	
-	@Lob // 대용량 데이터
+	@Column(nullable=false, length=200)
 	private String content;
 	
-	@ColumnDefault("0")
-	private int viewcnt;
+	@ManyToOne
+	@JoinColumn(name="boardid")
+	private Board board;
 	
 	@CreationTimestamp
 	private Timestamp date;
 	
-	@OneToMany(mappedBy="board", fetch=FetchType.EAGER)
-	private List<Reply> reply;
-	
+
 }

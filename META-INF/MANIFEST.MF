@@ -5,8 +5,8 @@ Bundle-SymbolicName: delightfulhee
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-15
 Automatic-Module-Name: delightfulhee
-Export-Package: com.dh,
- com.dh.handler,
- com.dh.model,
- com.dh.repository,
- com.dh.test
+Export-Package: com.dh.web,
+ com.dh.web.handler,
+ com.dh.web.model,
+ com.dh.web.repository,
+ com.dh.web.test

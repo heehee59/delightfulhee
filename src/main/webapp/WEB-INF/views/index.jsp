@@ -37,7 +37,7 @@
 	        </li>
 	        <li class="dropdown" id="loginjoin" style="float:right;">
 				<a href="user/login" title="Login">로그인</a>
-				<a href="user/join" title="Join"">회원가입</a>
+				<a href="user/joinForm" title="Join"">회원가입</a>
 	        </li>
 		</ul>
 		<div class="nav-footer">

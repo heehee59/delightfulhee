@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Delightfulhee</title>
-<link rel="stylesheet" href="../resources/css/reset.css">
-<link rel="stylesheet" href="../resources/css/style.css">
+<link rel="stylesheet" href="/delightfulhee/resources/css/reset.css">
+<link rel="stylesheet" href="/delightfulhee/resources/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Gugi:400');
@@ -36,7 +38,7 @@
 	        </li>
 	        <li class="dropdown" id="loginjoin" style="float:right;">
 				<a href="/delightfulhee/user/login" title="Login">로그인</a>
-				<a href="/delightfulhee/user/join" title="Join">회원가입</a>
+				<a href="/delightfulhee/user/joinForm" title="Join">회원가입</a>
 	        </li>
 		</ul>
 		<div class="nav-footer">

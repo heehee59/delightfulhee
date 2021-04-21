@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Delightfulhee</title>
-<link rel="stylesheet" href="resources/css/reset.css">
-<link rel="stylesheet" href="resources/css/mainStyle.css">
+<link rel="stylesheet" href="/delightfulhee/resources/css/reset.css">
+<link rel="stylesheet" href="/delightfulhee/resources/css/style.css">
 <style>
 .container {
 	overflow:hidden;
@@ -89,34 +89,34 @@
 	<div class="wraper" style="padding-top:100px;">
 	<div class="container-login">
 	<div class="join-title">JOIN</div>
-	<form class="join-form" action="#">
+	<form class="join-form">
 	<table class="join-table">
 		<tr>
-			<td><span class="join-subtitle">이메일주소</span> <span class="startag">*</span></td>
-			<td colspan="2"><input class="join-input" type="email" name="username" maxlength="40" required>
+			<td><span class="join-subtitle">아이디</span> <span class="startag">*</span></td>
+			<td><input class="join-input" type="text" id="username" maxlength="30">
 			<button class="dupl-btn">중복확인</button></td>
 		</tr>
 		<tr>
 			<td><span class="join-subtitle">비밀번호</span> <span class="startag">*</span></td>
-			<td colspan="2"><input class="join-input" type="password" name="password" maxlength="20" required></td>
+			<td><input class="join-input" type="password" id="password" maxlength="20"></td>
 		</tr>
 		<tr>
 			<td><span class="join-subtitle">비밀번호확인</span> <span class="startag">*</span></td>
-			<td colspan="2"><input class="join-input" type="password" name="password" maxlength="20" required></td>
+			<td><input class="join-input" type="password" id="passwordConfirm" maxlength="20"></td>
 		</tr>
 		<tr>
 			<td><span class="join-subtitle">닉네임</span> <span class="startag">*</span></td>
-			<td colspan="2"><input class="join-input" type="text" name="username" maxlength="10" required></td>
+			<td><input class="join-input" type="text" id="nickname" maxlength="30"></td>
 		</tr>
 		<tr>
-			<td><span class="join-subtitle">성별</span></td>
-			<td style="text-align:center;"><input type="radio" name="female">여자</td>
-			<td style="text-align:center;"><input type="radio" name="male">남자</td>
+			<td><span class="join-subtitle">이메일주소</span> <span class="startag">*</span></td>
+			<td><input class="join-input" type="email" id="email" maxlength="50"></td>
 		</tr>
 	</table>
 	<div class="bottom-content1"><span class="startag">*</span> 표시는 필수 항목입니다.</div>
 	<div class="bottom-content2"><input type="checkbox" style="transform:scale(1.5); margin-right:10px;"><a href="#" style="color:#5C42D7; font-weight:bold;">이용약관</a> 및 개인정보수집 이용에 동의합니다.</div>
-	<input class="submit-btn" type="submit" value="가입">
+	<button class="submit-btn" id="btn-save">가입</button>
+	<script src="/delightfulhee/js/user.js"></script>
 	</form>
 	</div>
 	</div>
