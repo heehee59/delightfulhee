@@ -26,13 +26,14 @@
 		 </div>
 		 
 		 <button id="btn-save">등록</button>
+		 <script src="/js/board.js"></script>
 		 </form>
 	</div>
 </div>
     <script>
       $(".summernote").summernote({
-        tabsize: 3,
-        height: 300,
+        tabsize: 2,
+        height: 400,
         toolbar: [
           ['style', ['style']],
           ['font', ['bold', 'underline', 'clear']],

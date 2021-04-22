@@ -43,7 +43,6 @@ public class Board {
 	@Lob // 대용량 데이터
 	private String content;
 	
-	@ColumnDefault("0")
 	private int viewcnt;
 	
 	@CreationTimestamp

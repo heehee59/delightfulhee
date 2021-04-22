@@ -3,6 +3,7 @@ package com.dh.web.repository;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.dh.web.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
