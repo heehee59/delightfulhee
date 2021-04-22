@@ -1,7 +1,7 @@
 server:
-  port: 8001
+  port: 8000
   servlet:
-    context-path: /delightfulhee
+    context-path: /
     encoding:
       charset: UTF-8
       enabled: true

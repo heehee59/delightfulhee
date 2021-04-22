@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Delightfulhee</title>
-<link rel="stylesheet" href="/delightfulhee/resources/css/reset.css">
-<link rel="stylesheet" href="/delightfulhee/resources/css/style.css">
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/style.css">
 <style>
 .container {
 	overflow:hidden;
@@ -98,19 +98,20 @@
 	<div class="wraper" style="padding-top:100px;">
 		<div class="container-login">
 		<div class="login-title">WELCOME</div>
-		<form class="login-form" action="#">
+		<form class="login-form" action="/auth/loginProc" method="post">
 		<table class="login-table">
 			<tr>
 				<td><span class="login-subtitle">아이디</span></td>
-				<td><input class="login-input" type="text" id="username" maxlength="40" required></td>
+				<td><input class="login-input" type="text" name="username" maxlength="40" required></td>
 			</tr>
 			<tr>
 				<td><span class="login-subtitle">비밀번호</span></td>
-				<td><input class="login-input" type="password" id="password" maxlength="20" required></td>
+				<td><input class="login-input" type="password" name="password" maxlength="20" required></td>
 			</tr>
 		</table>
 		<div style="text-align:right;"><a href="#">아이디 찾기</a> ㅣ <a href="#">비밀번호 찾기</a></div>
-		<input class="submit-btn" type="submit" value="로그인"><br>
+		<button id="btn-login" class="submit-btn">로그인</button><br>
+		<script src="/js/user.js"></script>
 		<button class="google-btn">구글 로그인</button><br>
 		<button class="kakao-btn">카카오 로그인</button><br>
 		<button class="naver-btn">네이버 로그인</button>

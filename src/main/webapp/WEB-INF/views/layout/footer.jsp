@@ -43,10 +43,10 @@ body {
 	Delightfulhee ㅣ 엄희경 ㅣ <a href="#">개인정보처리방침</a><br>
 	COPYRIGHT @ 2021 DELIGHTFULHEE ALL RIGHTS RESERVED.<br>
 	<ul class="contact">
-		<li><a href="mailto:mchell9999@gmail.com" target="_blank"><img src="/delightfulhee/resources\images\mail.png"></a></li>
-		<li><a href="http://github.com/heehee59/" target="_blank"><img src="/delightfulhee/resources\images\git.png"></a></li>
-		<li><a href="http://instagram.com/love_is_hee/" target="_blank"><img src="/delightfulhee/resources\images\instagram.png"></a></li>
-		<li><a href="http://blog.naver.com/heee_pp/" target="_blank"><img src="/delightfulhee/resources\images\blog.png"></a></li>
+		<li><a href="mailto:mchell9999@gmail.com" target="_blank"><img src="/images/mail.png"></a></li>
+		<li><a href="http://github.com/heehee59/" target="_blank"><img src="/images/git.png"></a></li>
+		<li><a href="http://instagram.com/love_is_hee/" target="_blank"><img src="/images/instagram.png"></a></li>
+		<li><a href="http://blog.naver.com/heee_pp/" target="_blank"><img src="/images/blog.png"></a></li>
 	</ul>
 </div>
 </div>

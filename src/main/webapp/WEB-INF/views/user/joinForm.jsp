@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Delightfulhee</title>
-<link rel="stylesheet" href="/delightfulhee/resources/css/reset.css">
-<link rel="stylesheet" href="/delightfulhee/resources/css/style.css">
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/style.css">
 <style>
 .container {
 	overflow:hidden;
@@ -116,7 +116,7 @@
 	<div class="bottom-content1"><span class="startag">*</span> 표시는 필수 항목입니다.</div>
 	<div class="bottom-content2"><input type="checkbox" style="transform:scale(1.5); margin-right:10px;"><a href="#" style="color:#5C42D7; font-weight:bold;">이용약관</a> 및 개인정보수집 이용에 동의합니다.</div>
 	<button class="submit-btn" id="btn-save">가입</button>
-	<script src="/delightfulhee/js/user.js"></script>
+	<script src="/js/user.js"></script>
 	</form>
 	</div>
 	</div>
