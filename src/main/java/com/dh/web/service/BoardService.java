@@ -1,6 +1,8 @@
 package com.dh.web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +21,10 @@ public class BoardService {
 		board.setViewcnt(0);
 		board.setUser(user);
 		boardRepository.save(board);
+	}
+	
+	public Page<Board> projectList(Pageable pageable) {
+		return boardRepository.findAll(pageable);
 	}
 
 }

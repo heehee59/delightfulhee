@@ -20,7 +20,7 @@ let index = {
 		}).done(function(resp){
 			alert("글이 등록되었습니다.");
 			console.log(resp);
-			location.href = "/";
+			location.href = "/auth/project";
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});

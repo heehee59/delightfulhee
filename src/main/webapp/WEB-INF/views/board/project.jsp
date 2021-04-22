@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +8,89 @@
 <title>Delightfulhee</title>
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/css/style.css">
+<style>
+.list {
+	width:1200px;
+	margin:auto;
+}
+.listline {
+	display:block;
+	margin-right:80px;
+	margin-bottom:80px;
+	display:inline-block;
+}
+.img {
+	width:300px;
+	hegiht:200px;
+}
+.title {
+	text-align:left;
+	margin-top:15px;
+}
+.btn {
+	text-align:right;
+	margin-right:100px;
+}
+.btn-write {
+	font-family:'LotteMartDream';
+	font-size:15px;
+	border:none;
+	outline:none;
+	background:transparent;
+	cursor:pointer;
+}
+.pagination {
+	margin-top:50px;
+}
+.page-item {
+	display:inline;
+}
+</style>
 </head>
 <body>
+<!-- header 영역 시작 -->
 <%@ include file="../layout/header.jsp" %>
+<!-- header 영역 끝 -->
 <section>
+<!-- 글 목록 부분 -->
 <div class="container">
-	<div class="wraper" style="padding-top:100px;">
+	<div style="padding-top:150px; text-align:center;">
+	<div class="list">
+	<c:forEach var="board" items="${boards.content }">
+		<div class="listline">
+			<div class="img"><img src="/images/tmp.jpg"></div>
+			<div class="title">${board.title }</div>
+		</div>
+	</c:forEach>
+	<div class="btn"><a href="/projectwrite"><button class="btn-write">글쓰기</button></a></div>
+	</div>
+<!-- 페이징 영역 시작 -->
+	<ul class="pagination">
+		<!-- 이전 버튼 활성화 -->
+		<c:choose>
+			<c:when test="${boards.first }"></c:when>
+			<c:otherwise>
+				<li class="page-item"><a href="?page=${boards.number-1 }">Prev</a></li>
+			</c:otherwise>
+		</c:choose>
+		<!-- 페이징 버튼 -->
+		<c:forEach var="pageNum" begin="${firstPage }" end="${lastPage }">
+			<li class="page-item"><a href="?page=${pageNum-1}">${pageNum }</a></li>
+		</c:forEach>
+		<!-- 다음 버튼 활성화 -->
+		<c:choose>
+		<c:when test="${boards.last }"></c:when>
+			<c:otherwise>
+				<li class="page-item"><a href="?page=${boards.number+1 }">Next</a></li>
+			</c:otherwise>
+		</c:choose>
+	</ul>
+<!-- 페이징 영역 끝 -->
 	</div>
 </div>
+<!-- footer 영역 시작 -->
+	<hr class="line">
+<!-- footer 영역 끝 -->
 </section>
 </body>
 </html>

@@ -30,19 +30,19 @@
 	</div>
 		<ul class="nav">
 	        <li class="dropdown" id="about">
-				<a href="/about" title="About">ABOUT<span style="float:right; font-weight:bold;">></span></a>
+				<a href="/auth/about" title="About">ABOUT<span style="float:right; font-weight:bold;">></span></a>
 				<hr class="liline">
 	        </li>
 	        <li class="dropdown" id="project">
-				<a href="/project" title="Project">PROJECT<span style="float:right; font-weight:bold;">></span></a>
+				<a href="/auth/project" title="Project">PROJECT<span style="float:right; font-weight:bold;">></span></a>
 				<hr class="liline">
 	        </li>
 	        <li class="dropdown" id="story">
-				<a href="/develstory" title="Story">DEVELOP. STORY<span style="float:right; font-weight:bold;">></span></a>
+				<a href="/auth/develstory" title="Story">DEVELOP. STORY<span style="float:right; font-weight:bold;">></span></a>
 				<hr class="liline">
 	        </li>
 	        <li class="dropdown" id="guest">
-				<a href="/guestbook" title="Guest">GUEST BOOK<span style="float:right; font-weight:bold;">></span></a>
+				<a href="/auth/guestbook" title="Guest">GUEST BOOK<span style="float:right; font-weight:bold;">></span></a>
 				<hr class="liline">
 	        </li>
 	        <c:choose>
