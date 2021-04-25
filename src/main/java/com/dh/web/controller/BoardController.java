@@ -8,6 +8,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.dh.web.model.Board;
 import com.dh.web.service.BoardService;
@@ -19,16 +20,19 @@ public class BoardController {
 	private BoardService boardService;
 	
 	//@AuthenticationPrincipal PrincipalDetail principal
+	// index
 	@GetMapping({"","/"})
 	public String index() {
 		return "index";
 	}
 	
+	// about
 	@GetMapping("/auth/about")
 	public String about() {
 		return "board/about";
 	}
 	
+	// project 목록 불러오기
 	@GetMapping("/auth/project")
 	public String project(@PageableDefault(size=6, sort="id", direction=Sort.Direction.DESC) Pageable pageable, Model model) {
 	Page<Board> list = boardService.projectList(pageable);
@@ -44,9 +48,24 @@ public class BoardController {
 		return "board/project";
 	}
 	
-	@GetMapping("/projectwrite")
+	// project 글쓰기 화면 요청
+	@GetMapping("/project/write")
 	public String projectWriteForm() {
 		return "board/project_writeForm";
+	}
+	
+	// project 글 상세보기 화면 요청
+	@GetMapping("/project/{id}")
+	public String findById(@PathVariable int id, Model model) {
+		model.addAttribute("board", boardService.projectContent(id));
+		return "board/project_detail";
+	}
+	
+	// project 글 수정 화면 요청
+	@GetMapping("/project/modify/{id}")
+	public String projectModifyForm(@PathVariable int id) {
+		
+		return "board/project_modifyForm";
 	}
 	
 	@GetMapping("/auth/develstory")

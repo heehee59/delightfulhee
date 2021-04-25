@@ -7,5 +7,4 @@ import com.dh.web.model.Board;
 public interface BoardRepository extends JpaRepository<Board, Integer>{
 
 	
-	
 }

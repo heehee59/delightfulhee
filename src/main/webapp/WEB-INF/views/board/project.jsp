@@ -54,15 +54,15 @@
 <section>
 <!-- 글 목록 부분 -->
 <div class="container">
-	<div style="padding-top:150px; text-align:center;">
+	<div style="padding-top:150px; text-align:center; font-size:15px;">
 	<div class="list">
 	<c:forEach var="board" items="${boards.content }">
 		<div class="listline">
-			<div class="img"><img src="/images/tmp.jpg"></div>
-			<div class="title">${board.title }</div>
+			<div class="img"><a href="/project/${board.id }"><img src="/images/tmp.jpg"></a></div>
+			<div class="title"><a href="/project/${board.id }">${board.title }</a></div>
 		</div>
 	</c:forEach>
-	<div class="btn"><a href="/projectwrite"><button class="btn-write">글쓰기</button></a></div>
+	<div class="btn"><a href="/project/write"><button class="btn-write">글쓰기</button></a></div>
 	</div>
 <!-- 페이징 영역 시작 -->
 	<ul class="pagination">
@@ -90,6 +90,7 @@
 </div>
 <!-- footer 영역 시작 -->
 	<hr class="line">
+	<%@ include file="../layout/footer.jsp" %>
 <!-- footer 영역 끝 -->
 </section>
 </body>
