@@ -34,7 +34,7 @@ let index = {
 		
 		$.ajax({
 			type: "DELETE",
-			url: "/api/board"+id,
+			url: "/api/board/"+id,
 			dataType: "json"
 		}).done(function(resp){
 			alert("글이 삭제되었습니다.");

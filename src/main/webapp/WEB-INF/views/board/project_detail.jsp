@@ -65,7 +65,9 @@
 	<hr class="line">
 	<div class="content">${board.content }</div>
 	<div class="likes">좋아요</div>
+	<c:if test="${board.user.id == principal.user.id }">
 	<div class="list-modi-del"><a href="/auth/project"><button class="btn">목록</button></a><button id="btn-update" class="btn">수정</button><button id="btn-delete" class="btn">삭제</button></div>
+	</c:if>
 	<input type="hidden" value="${board.id }" id="id">
 	<script src="/js/board.js"></script>
 	<hr class="line">
