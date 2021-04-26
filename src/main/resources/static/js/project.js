@@ -6,6 +6,9 @@ let index = {
 		$("#btn-delete").on("click",()=>{
 			this.deleteById();
 		});
+		$("#btn-update").on("click",()=>{
+			this.update();
+		});
 	},
 	
 	save: function() {
@@ -16,7 +19,7 @@ let index = {
 		
 		$.ajax({
 			type: "POST",
-			url: "/api/board",
+			url: "/api/project",
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
 			dataType: "json"
@@ -34,7 +37,7 @@ let index = {
 		
 		$.ajax({
 			type: "DELETE",
-			url: "/api/board/"+id,
+			url: "/api/project/"+id,
 			dataType: "json"
 		}).done(function(resp){
 			alert("글이 삭제되었습니다.");
@@ -42,7 +45,29 @@ let index = {
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});
-	}
+	},
+	
+	update: function() {
+		var id = $("#id").val();
+		
+		let data = {
+			title: $("#title").val(),
+			content: $("#content").val()
+		};
+		
+		$.ajax({
+			type: "PUT",
+			url: "/api/project/"+id,
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function(resp){
+			alert("글이 수정되었습니다.");
+			location.href = "/auth/project";
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
+	},
 	
 }
 

@@ -26,6 +26,18 @@ public class UserService {
 		user.setLevel(LevelType.USER);
 		userRepository.save(user);
 	}
+
+	@Transactional
+	public void update(User user) {
+		User persistance = userRepository.findById(user.getId()).orElseThrow(()->{
+			return new IllegalArgumentException("해당 회원을 찾을 수 없습니다.");
+		});
+		String rawPassword = user.getPassword();
+		String encPassword = encoder.encode(rawPassword);
+		persistance.setNickname(user.getNickname());
+		persistance.setPassword(encPassword);
+		persistance.setEmail(user.getEmail());
+	}
 	
 	
 }

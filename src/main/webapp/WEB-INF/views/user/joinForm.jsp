@@ -16,6 +16,7 @@
 }
 .wraper {
 	line-height:35px;
+	padding-top:100px;
 }
 .cotainer-join {
 	margin:auto;
@@ -83,11 +84,13 @@
 </style>
 </head>
 <body>
+<!-- header 영역 시작 -->
 <%@ include file="../layout/header.jsp" %>
+<!-- header 영역 끝 -->
 <section>
 <div class="container">
-	<div class="wraper" style="padding-top:100px;">
-	<div class="container-login">
+	<div class="wraper">
+	<div class="container-join">
 	<div class="join-title">JOIN</div>
 	<form class="join-form">
 	<table class="join-table">
@@ -121,8 +124,10 @@
 	</div>
 	</div>
 </div>
+<!-- footer 영역 시작 -->
 	<hr class="line">
 	<%@ include file="../layout/footer.jsp" %>
+<!-- footer 영역 끝 -->
 </section>
 </body>
 </html>

@@ -45,36 +45,36 @@ public class BoardController {
 		model.addAttribute("boards", list);
 		model.addAttribute("firstPage", firstPage);
 		model.addAttribute("lastPage", lastPage);
-		return "board/project";
+		return "board/project/project";
 	}
 	
 	// project 글쓰기 화면 요청
 	@GetMapping("/project/write")
 	public String projectWriteForm() {
-		return "board/project_writeForm";
+		return "board/project/project_writeForm";
 	}
 	
 	// project 글 상세보기 화면 요청
 	@GetMapping("/project/{id}")
 	public String findById(@PathVariable int id, Model model) {
 		model.addAttribute("board", boardService.projectContent(id));
-		return "board/project_detail";
+		return "board/project/project_detail";
 	}
 	
 	// project 글 수정 화면 요청
-	@GetMapping("/project/modify/{id}")
-	public String projectModifyForm(@PathVariable int id) {
-		
-		return "board/project_modifyForm";
+	@GetMapping("/project/{id}/modify")
+	public String projectModifyForm(@PathVariable int id, Model model) {
+		model.addAttribute("board", boardService.projectContent(id));
+		return "board/project/project_modifyForm";
 	}
 	
 	@GetMapping("/auth/develstory")
 	public String delvelstory() {
-		return "board/develstory";
+		return "board/story/develstory";
 	}
 	
 	@GetMapping("/auth/guestbook")
 	public String guestbook() {
-		return "board/guestbook";
+		return "board/guest/guestbook";
 	}
 }

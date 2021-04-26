@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,27 +8,27 @@
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/css/style.css">
 <style>
-.list {
-	width:1200px;
-	margin:auto;
+.container {
+	text-align:center;
+	font-size:15px;
 }
-.listline {
-	display:block;
-	margin-right:80px;
-	margin-bottom:80px;
-	display:inline-block;
+.story-title {
+	font-size:30px;
+	margin-top:100px;
 }
-.img {
-	width:300px;
-	hegiht:200px;
+.boardline {
+	border:2px;
+	height:2px;
+	background:black;
 }
-.title {
-	text-align:left;
-	margin-top:15px;
+.story-table {
+	width:900px;
 }
 .btn {
+	width:900px;
 	text-align:right;
-	margin-right:100px;
+	margin:auto;
+	padding-top:15px;
 }
 .btn-write {
 	font-family:'LotteMartDream';
@@ -41,6 +40,7 @@
 }
 .pagination {
 	margin-top:50px;
+	padding-bottom:50px;
 }
 .page-item {
 	display:inline;
@@ -49,21 +49,39 @@
 </head>
 <body>
 <!-- header 영역 시작 -->
-<%@ include file="../layout/header.jsp" %>
+<%@ include file="../../layout/header.jsp" %>
 <!-- header 영역 끝 -->
 <section>
-<!-- 글 목록 부분 -->
 <div class="container">
-	<div style="padding-top:150px; text-align:center; font-size:15px;">
-	<div class="list">
-	<c:forEach var="board" items="${boards.content }">
-		<div class="listline">
-			<div class="img"><a href="/project/${board.id }"><img src="/images/tmp.jpg"></a></div>
-			<div class="title"><a href="/project/${board.id }">${board.title }</a></div>
-		</div>
-	</c:forEach>
-	<div class="btn"><a href="/project/write"><button class="btn-write">글쓰기</button></a></div>
+	<div class="story-title">DEVELOP. STORY</div>
+	<div class="wraper" style="padding-top:100px; line-height:35px;">
+	<table class="story-table">
+		<tr>
+			<td colspan="5"><hr class="boardline" /></td>
+		</tr>
+		<tr>
+			<td>글 번호</td>
+			<td>제목</td>
+			<td>작성자</td>
+			<td>작성일</td>
+			<td>조회수</td>
+		</tr>
+		<tr>
+			<td colspan="5"><hr class="boardline" /></td>
+		</tr>
+		<tr>
+			<td>글 번호</td>
+			<td style="width:500px;">제목 들어오는 곳</td>
+			<td>작성자</td>
+			<td>작성일</td>
+			<td>조회수</td>
+		</tr>
+		<tr>
+			<td colspan="5"><hr class="boardline" /></td>		
+		</tr>
+	</table>
 	</div>
+	<div class="btn"><a href="/story/write"><button class="btn-write">글쓰기</button></a></div>
 <!-- 페이징 영역 시작 -->
 	<ul class="pagination">
 		<!-- 이전 버튼 활성화 -->
@@ -86,11 +104,10 @@
 		</c:choose>
 	</ul>
 <!-- 페이징 영역 끝 -->
-	</div>
 </div>
 <!-- footer 영역 시작 -->
-	<hr class="line">
-	<%@ include file="../layout/footer.jsp" %>
+<hr class="line">
+<%@ include file="../../layout/footer.jsp" %>	
 <!-- footer 영역 끝 -->
 </section>
 </body>
