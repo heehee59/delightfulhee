@@ -10,14 +10,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.dh.web.model.Board;
-import com.dh.web.service.BoardService;
+import com.dh.web.model.GuestBook;
+import com.dh.web.model.Project;
+import com.dh.web.service.GuestBookService;
+import com.dh.web.service.ProjectService;
 
 @Controller
 public class BoardController {
 	
 	@Autowired
-	private BoardService boardService;
+	private ProjectService projectService;
+	
+	@Autowired
+	private GuestBookService guestService;
 	
 	//@AuthenticationPrincipal PrincipalDetail principal
 	// index
@@ -35,7 +40,7 @@ public class BoardController {
 	// project 목록 불러오기
 	@GetMapping("/auth/project")
 	public String project(@PageableDefault(size=6, sort="id", direction=Sort.Direction.DESC) Pageable pageable, Model model) {
-	Page<Board> list = boardService.projectList(pageable);
+		Page<Project> list = projectService.projectList(pageable);
 		int nowPage = list.getPageable().getPageNumber();	// 현재 페이지
 		int totalPages = list.getTotalPages();	// 총 페이지 수
 		int pageBtn = 5;	// 표시 될 페이지 버튼 수
@@ -57,24 +62,36 @@ public class BoardController {
 	// project 글 상세보기 화면 요청
 	@GetMapping("/project/{id}")
 	public String findById(@PathVariable int id, Model model) {
-		model.addAttribute("board", boardService.projectContent(id));
+		model.addAttribute("board", projectService.projectContent(id));
 		return "board/project/project_detail";
 	}
 	
 	// project 글 수정 화면 요청
 	@GetMapping("/project/{id}/modify")
 	public String projectModifyForm(@PathVariable int id, Model model) {
-		model.addAttribute("board", boardService.projectContent(id));
+		model.addAttribute("board", projectService.projectContent(id));
 		return "board/project/project_modifyForm";
 	}
 	
+	// devel-story 목록 불러오기
 	@GetMapping("/auth/develstory")
 	public String delvelstory() {
 		return "board/story/develstory";
 	}
 	
-	@GetMapping("/auth/guestbook")
-	public String guestbook() {
+	// guestbook 화면 요청
+	@GetMapping("/guestbook")
+	public String guestbook(@PageableDefault(size=3, sort="id", direction=Sort.Direction.DESC) Pageable pageable, Model model) {
+		Page<GuestBook> list = guestService.guestbookList(pageable);
+		int nowPage = list.getPageable().getPageNumber();	// 현재 페이지
+		int totalPages = list.getTotalPages();	// 총 페이지 수
+		int pageBtn = 5;	// 표시 될 페이지 버튼 수
+		int firstPage = (nowPage/pageBtn)*pageBtn+1;
+		int lastPage = firstPage+pageBtn-1;
+		lastPage = totalPages < lastPage ? totalPages : lastPage;
+		model.addAttribute("boards", list);
+		model.addAttribute("firstPage", firstPage);
+		model.addAttribute("lastPage", lastPage);
 		return "board/guest/guestbook";
 	}
 }

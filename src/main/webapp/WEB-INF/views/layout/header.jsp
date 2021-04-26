@@ -42,7 +42,7 @@
 				<hr class="liline">
 	        </li>
 	        <li class="dropdown" id="guest">
-				<a href="/auth/guestbook" title="Guest">GUEST BOOK<span style="float:right; font-weight:bold;">></span></a>
+				<a href="/guestbook" title="Guest">GUEST BOOK<span style="float:right; font-weight:bold;">></span></a>
 				<hr class="liline">
 	        </li>
 	        <c:choose>

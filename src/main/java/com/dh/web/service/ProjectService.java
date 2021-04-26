@@ -6,31 +6,31 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dh.web.model.Board;
+import com.dh.web.model.Project;
 import com.dh.web.model.User;
-import com.dh.web.repository.BoardRepository;
+import com.dh.web.repository.ProjectRepository;
 
 @Service
-public class BoardService {
+public class ProjectService {
 	
 	@Autowired
-	private BoardRepository boardRepository;
+	private ProjectRepository projectRepository;
 
 	@Transactional
-	public void write(Board board, User user) {
+	public void write(Project board, User user) {
 		board.setViewcnt(0);
 		board.setUser(user);
-		boardRepository.save(board);
+		projectRepository.save(board);
 	}
 	
 	@Transactional(readOnly = true)
-	public Page<Board> projectList(Pageable pageable) {
-		return boardRepository.findAll(pageable);
+	public Page<Project> projectList(Pageable pageable) {
+		return projectRepository.findAll(pageable);
 	}
 	
 	@Transactional(readOnly = true)
-	public Board projectContent(int id) {
-		return boardRepository.findById(id)
+	public Project projectContent(int id) {
+		return projectRepository.findById(id)
 				.orElseThrow(()->{
 					return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다.");
 				});
@@ -38,12 +38,12 @@ public class BoardService {
 
 	@Transactional
 	public void delete(int id) {
-		boardRepository.deleteById(id);
+		projectRepository.deleteById(id);
 	}
 
 	@Transactional
-	public void update(int id, Board requestBoard) {
-		Board board = boardRepository.findById(id)
+	public void update(int id, Project requestBoard) {
+		Project board = projectRepository.findById(id)
 				.orElseThrow(()->{
 					return new IllegalArgumentException("해당 글을 찾을 수 없습니다.");
 				});
