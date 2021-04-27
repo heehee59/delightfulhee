@@ -53,6 +53,27 @@
 	background:transparent;
 	font-size:14px;
 }
+.user-pic {
+	border:1px solid #dddddd;
+	border-radius:400px 400px 400px 400px;
+	background:#dddddd;
+	width:100px;
+	height:100px;
+	margin-top:15px;
+	margin-bottom:15px;
+}
+.pic-btn {
+	outline:none;
+	border:2px solid black;
+	background:black;
+	color:white;
+	padding:5px;
+	cursor:pointer;
+	font-family:'LotteMartDream';
+	position:relative;
+	margin-left:20px;
+	margin-top:65px;
+}
 .dupl-btn {
 	outline:none;
 	border:2px solid black;
@@ -93,6 +114,9 @@
 	<div class="container-join">
 	<div class="join-title">JOIN</div>
 	<form class="join-form">
+	<div class="user-pic">
+		<button class="pic-btn">사진등록</button>
+	</div>
 	<table class="join-table">
 		<tr>
 			<td><span class="join-subtitle">아이디</span> <span class="startag">*</span></td>

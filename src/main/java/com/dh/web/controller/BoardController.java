@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.dh.web.model.GuestBook;
 import com.dh.web.model.Project;
+import com.dh.web.model.Story;
 import com.dh.web.service.GuestBookService;
 import com.dh.web.service.ProjectService;
+import com.dh.web.service.StoryService;
 
 @Controller
 public class BoardController {
@@ -23,6 +25,9 @@ public class BoardController {
 	
 	@Autowired
 	private GuestBookService guestService;
+	
+	@Autowired
+	private StoryService storyService;
 	
 	//@AuthenticationPrincipal PrincipalDetail principal
 	// index
@@ -54,20 +59,20 @@ public class BoardController {
 	}
 	
 	// project 글쓰기 화면 요청
-	@GetMapping("/project/write")
+	@GetMapping("/auth/project/write")
 	public String projectWriteForm() {
 		return "board/project/project_writeForm";
 	}
 	
 	// project 글 상세보기 화면 요청
-	@GetMapping("/project/{id}")
-	public String findById(@PathVariable int id, Model model) {
+	@GetMapping("/auth/project/{id}")
+	public String projectFindById(@PathVariable int id, Model model) {
 		model.addAttribute("board", projectService.projectContent(id));
 		return "board/project/project_detail";
 	}
 	
 	// project 글 수정 화면 요청
-	@GetMapping("/project/{id}/modify")
+	@GetMapping("/auth/project/{id}/modify")
 	public String projectModifyForm(@PathVariable int id, Model model) {
 		model.addAttribute("board", projectService.projectContent(id));
 		return "board/project/project_modifyForm";
@@ -75,8 +80,37 @@ public class BoardController {
 	
 	// devel-story 목록 불러오기
 	@GetMapping("/auth/develstory")
-	public String delvelstory() {
+	public String delvelstory(@PageableDefault(size=10, sort="id", direction=Sort.Direction.DESC) Pageable pageable, Model model) {
+		Page<Story> list = storyService.storyList(pageable);
+		int nowPage = list.getPageable().getPageNumber();	// 현재 페이지
+		int totalPages = list.getTotalPages();	// 총 페이지 수
+		int pageBtn = 5;	// 표시 될 페이지 버튼 수
+		int firstPage = (nowPage/pageBtn)*pageBtn+1;
+		int lastPage = firstPage+pageBtn-1;
+		lastPage = totalPages < lastPage ? totalPages : lastPage;
+		model.addAttribute("boards", list);
+		model.addAttribute("firstPage", firstPage);
 		return "board/story/develstory";
+	}
+	
+	// devel-story 글쓰기 화면 요청
+	@GetMapping("/auth/develstory/write")
+	public String storyWriteForm() {
+		return "board/story/develstory_writeForm";
+	}
+	
+	// devel-story 글 상세보기 화면 요청
+	@GetMapping("/auth/develstory/{id}")
+	public String storyFindById(@PathVariable int id, Model model) {
+		model.addAttribute("board", storyService.storyContent(id));
+		return "board/story/develstory_detail";
+	}
+	
+	// devel-story 글 수정 화면 요청
+	@GetMapping("/auth/develstory/{id}/modify")
+	public String storyModifyForm(@PathVariable int id, Model model) {
+		model.addAttribute("board", storyService.storyContent(id));
+		return "board/story/develstory_modifyForm";
 	}
 	
 	// guestbook 화면 요청

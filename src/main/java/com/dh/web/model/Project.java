@@ -13,9 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -49,6 +51,8 @@ public class Project {
 	private Timestamp date;
 	
 	@OneToMany(mappedBy="board", fetch=FetchType.EAGER)
+	@JsonIgnoreProperties
+	@OrderBy("id asc")
 	private List<ProjectReply> reply;
 	
 }

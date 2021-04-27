@@ -9,6 +9,12 @@ let index = {
 		$("#btn-update").on("click",()=>{
 			this.update();
 		});
+		$("#btn-reply-save").on("click",()=>{
+			this.replySave();
+		});
+		$("#btn-reply-delete").on("click",()=>{
+			this.replyDelete();
+		});
 	},
 	
 	save: function() {
@@ -25,7 +31,6 @@ let index = {
 			dataType: "json"
 		}).done(function(resp){
 			alert("글이 등록되었습니다.");
-			console.log(resp);
 			location.href = "/auth/project";
 		}).fail(function(error){
 			alert(JSON.stringify(error));
@@ -68,6 +73,44 @@ let index = {
 			alert(JSON.stringify(error));
 		});
 	},
+	
+	replySave: function() {
+		let data = {
+			userid: $("#userid").val(),
+			boardid: $("#boardid").val(),
+			content: $("#reply-content").val()
+		};
+		
+		$.ajax({
+			type: "POST",
+			url: '/api/project/'+data.boardid+'/reply',
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function(resp){
+			alert("댓글이 등록되었습니다.");
+			location.href = '/auth/project/'+data.boardid;
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
+	},
+	
+	replyDelete: function(boardid, replyid) {
+		
+		console.log(boardid);
+		console.log(replyid);
+		
+		$.ajax({
+			type: "DELETE",
+			url: '/api/project/'+boardid+'/reply/'+replyid,
+			dataType: "json"
+		}).done(function(resp){
+			alert("댓글이 삭제되었습니다.");
+			location.href = '/auth/project/'+data.boardid;
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
+	}
 	
 }
 

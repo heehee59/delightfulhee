@@ -13,42 +13,42 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dh.web.config.auth.PrincipalDetail;
 import com.dh.web.dto.ReplySaveRequestDto;
 import com.dh.web.dto.ResponseDto;
-import com.dh.web.model.Project;
-import com.dh.web.service.ProjectService;
+import com.dh.web.model.Story;
+import com.dh.web.service.StoryService;
 
 @RestController
-public class ProjectApiController {
+public class StoryApiController {
 	
 	@Autowired
-	private ProjectService boardService;
+	private StoryService storyService;
 
-	@PostMapping("/api/project")
-	public ResponseDto<Integer> save(@RequestBody Project board, @AuthenticationPrincipal PrincipalDetail principal) {
-		boardService.write(board, principal.getUser());
+	@PostMapping("/api/develstory")
+	public ResponseDto<Integer> save(@RequestBody Story board, @AuthenticationPrincipal PrincipalDetail principal) {
+		storyService.write(board, principal.getUser());
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
-	@DeleteMapping("/api/project/{id}")
+	@DeleteMapping("/api/develstory/{id}")
 	public ResponseDto<Integer> deleteById(@PathVariable int id) {
-		boardService.delete(id);
+		storyService.delete(id);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); 
 	}
 	
-	@PutMapping("/api/project/{id}")
-	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Project board) {
-		boardService.update(id, board);
+	@PutMapping("/api/develstory/{id}")
+	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Story board) {
+		storyService.update(id, board);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 
-	@PostMapping("/api/project/{boardid}/reply")
+	@PostMapping("/api/develstory/{boardid}/reply")
 	public ResponseDto<Integer> replySave(@RequestBody ReplySaveRequestDto replySaveRequestDto) {
-		boardService.writeReply(replySaveRequestDto);
+		storyService.writeReply(replySaveRequestDto);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
-	@DeleteMapping("/api/project/{boardid}/reply/{replyid}")
+	@DeleteMapping("/api/develstory/{boardid}/reply/{replyid}")
 	public ResponseDto<Integer> replyDelete(@PathVariable int replyid) {
-		boardService.deleteReply(replyid);
+		storyService.deleteReply(replyid);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); 
 	}
 }

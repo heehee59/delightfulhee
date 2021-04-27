@@ -69,11 +69,11 @@
 	<div class="list">
 	<c:forEach var="board" items="${boards.content }">
 		<div class="listline">
-			<div class="img"><a href="/project/${board.id }"><img src="/images/tmp.jpg"></a></div>
-			<div class="title"><a href="/project/${board.id }">${board.title }</a></div>
+			<div class="img"><a href="/auth/project/${board.id }"><img src="/images/tmp.jpg"></a></div>
+			<div class="title"><a href="/auth/project/${board.id }">${board.title }</a></div>
 		</div>
 	</c:forEach>
-	<div class="btn"><a href="/project/write"><button class="btn-write">글쓰기</button></a></div>
+	<div class="btn"><a href="/auth/project/write"><button class="btn-write">글쓰기</button></a></div>
 	</div>
 <!-- 페이징 영역 시작 -->
 	<ul class="pagination">

@@ -12,8 +12,6 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.dh.web.dto.ReplySaveRequestDto;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class ProjectReply {
+public class StoryReply {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -38,8 +36,8 @@ public class ProjectReply {
 	private String content;
 	
 	@ManyToOne
-	@JoinColumn(name="projectid")
-	private Project board;
+	@JoinColumn(name="storyid")
+	private Story board;
 	
 	@CreationTimestamp
 	private Timestamp date;
