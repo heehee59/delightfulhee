@@ -17,6 +17,14 @@ public class UserService {
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+	
+	@Transactional(readOnly = true)
+	public User findUser(String username) {
+		User user = userRepository.findByUsername(username).orElseGet(()->{
+			return new User();
+		});
+		return user;
+	}
 
 	@Transactional
 	public void join(User user) {
@@ -32,12 +40,20 @@ public class UserService {
 		User persistance = userRepository.findById(user.getId()).orElseThrow(()->{
 			return new IllegalArgumentException("해당 회원을 찾을 수 없습니다.");
 		});
-		String rawPassword = user.getPassword();
-		String encPassword = encoder.encode(rawPassword);
+		
+		// oauth 체크해서 소셜 로그인 사용자는 비밀번호 수정 로직을 타지 못하게 함
+		if(persistance.getOauth() == null || persistance.getOauth().equals("")) {			
+			String rawPassword = user.getPassword();
+			String encPassword = encoder.encode(rawPassword);
+			persistance.setPassword(encPassword);
+		}
 		persistance.setNickname(user.getNickname());
-		persistance.setPassword(encPassword);
 		persistance.setEmail(user.getEmail());
 	}
 	
+	@Transactional
+	public void delete(int id) {
+		userRepository.deleteById(id);
+	}
 	
 }

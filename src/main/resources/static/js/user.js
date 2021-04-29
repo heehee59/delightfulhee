@@ -6,6 +6,9 @@ let index = {
 		$("#btn-update").on("click",()=>{
 			this.update();
 		});
+		$("#btn-delete").on("click",()=>{
+			this.delete();
+		});
 	},
 	
 	save: function() {
@@ -34,6 +37,7 @@ let index = {
 	update: function() {
 		let data = {
 			id: $("#id").val(),
+			username: $("#username").val(),
 			password: $("#password").val(),
 			nickname: $("#nickname").val(),
 			email: $("#email").val()
@@ -48,6 +52,21 @@ let index = {
 		}).done(function(resp){
 			alert("정보 수정이 완료되었습니다.");
 			location.href = "/mypage";
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
+	},
+	
+	delete: function() {
+		var id = $("#id").val();
+		
+		$.ajax({
+			type: "DELETE",
+			url: "/mypage/"+id,
+			dataType: "json"
+		}).done(function(resp){
+			alert("회원 탈퇴가 완료되었습니다.");
+			location.href = "/";
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});

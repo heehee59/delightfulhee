@@ -13,9 +13,9 @@
 .container {
 	font-size:15px;
 }
-.abouttitle {
+.about-title {
 }
-.aboutcontent {
+.about-content {
 	text-align:left;
 }
 </style>
@@ -27,8 +27,8 @@
 <section>
 <div class="container">
 	<div class="wraper" style="padding-top:100px;">
-	<div class="abouttitle">개발자 소개</div>
-	<div class="aboutcontent">
+	<div class="about-title">개발자 소개</div>
+	<div class="about-content">
 		<div class="corevalue">
 			<ul>
 				<li>신뢰</li>

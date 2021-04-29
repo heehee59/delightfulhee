@@ -29,14 +29,13 @@ public class BoardController {
 	@Autowired
 	private StoryService storyService;
 	
-	//@AuthenticationPrincipal PrincipalDetail principal
 	// index
 	@GetMapping({"","/"})
 	public String index() {
 		return "index";
 	}
 	
-	// about
+	// about 페이지 화면 요청
 	@GetMapping("/auth/about")
 	public String about() {
 		return "board/about";
@@ -127,5 +126,11 @@ public class BoardController {
 		model.addAttribute("firstPage", firstPage);
 		model.addAttribute("lastPage", lastPage);
 		return "board/guest/guestbook";
+	}
+	
+	// 개인정보처리방침 페이지 화면 요청
+	@GetMapping("/auth/policy")
+	public String policy() {
+		return "board/policy";
 	}
 }

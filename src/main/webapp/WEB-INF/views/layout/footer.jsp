@@ -15,7 +15,7 @@ body {
 	font-family:'LotteMartDream';
 	font-size:12.5px;
 }
-.wraper {
+.footer-wraper {
 	display:flex;
 	text-align:center;
 	justify-content:center;
@@ -38,9 +38,9 @@ body {
 </style>
 </head>
 <body>
-<div class="wraper">
+<div class="footer-wraper">
 <div class="contentpane">
-	Delightfulhee ㅣ 엄희경 ㅣ <a href="#">개인정보처리방침</a><br>
+	Delightfulhee ㅣ 엄희경 ㅣ <a href="/auth/policy">개인정보처리방침</a><br>
 	COPYRIGHT @ 2021 DELIGHTFULHEE ALL RIGHTS RESERVED.<br>
 	<ul class="contact">
 		<li><a href="mailto:mchell9999@gmail.com" target="_blank"><img src="/images/mail.png"></a></li>

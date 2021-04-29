@@ -99,10 +99,12 @@
 			<td><span class="mypage-subtitle">아이디</span></td>
 			<td><input class="mypage-input" type="text" id="username" value="${principal.user.username }" readonly>
 		</tr>
+		<c:if test="${empty principal.user.oauth }">
 		<tr>
 			<td><span class="mypage-subtitle">새 비밀번호</span> <span class="startag">*</span></td>
 			<td><input class="mypage-input" type="password" id="password" maxlength="20"></td>
 		</tr>
+		</c:if>
 		<tr>
 			<td><span class="mypage-subtitle">닉네임</span> <span class="startag">*</span></td>
 			<td><input class="mypage-input" type="text" id="nickname" value="${principal.user.nickname }" maxlength="30"></td>
@@ -113,7 +115,7 @@
 		</tr>
 	</table>
 	<button class="submit-btn" id="btn-update">정보 수정</button>
-	<button class="withdrawl-btn" id="btn-withdrawl">회원 탈퇴</button>
+	<button class="withdrawl-btn" id="btn-delete">회원 탈퇴</button>
 	<script src="/js/user.js"></script>
 	</form>
 	</div>

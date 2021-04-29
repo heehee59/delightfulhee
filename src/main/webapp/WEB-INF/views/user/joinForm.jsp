@@ -16,7 +16,7 @@
 }
 .wraper {
 	line-height:35px;
-	padding-top:100px;
+	padding-top:40px;
 }
 .cotainer-join {
 	margin:auto;
@@ -59,20 +59,17 @@
 	background:#dddddd;
 	width:100px;
 	height:100px;
-	margin-top:15px;
-	margin-bottom:15px;
+	overflow:hidden;
+	margin-bottom:15px;	
+	margin-left:150px;
 }
-.pic-btn {
-	outline:none;
-	border:2px solid black;
-	background:black;
-	color:white;
-	padding:5px;
-	cursor:pointer;
-	font-family:'LotteMartDream';
-	position:relative;
-	margin-left:20px;
-	margin-top:65px;
+.user-imgthum {
+	width:100%;
+	height:100%;
+	object-fit:cover;
+}
+.user-pic-content {
+	margin-bottom:30px;
 }
 .dupl-btn {
 	outline:none;
@@ -114,34 +111,42 @@
 	<div class="container-join">
 	<div class="join-title">JOIN</div>
 	<form class="join-form">
+	<!-- 프로필 이미지 부분 시작 -->
 	<div class="user-pic">
-		<button class="pic-btn">사진등록</button>
+		<img src="/images/defaultimg.png" class="user-imgthum">
 	</div>
+	<div class="user-pic-content">
+		<span class="startag">*</span> 소셜 로그인이 아닌 홈페이지 가입시 프로필 이미지는 기본 이미지로 부여됩니다.
+	</div>
+	<!-- 프로필 이미지 부분 끝 -->
 	<table class="join-table">
 		<tr>
 			<td><span class="join-subtitle">아이디</span> <span class="startag">*</span></td>
-			<td><input class="join-input" type="text" id="username" maxlength="30">
+			<td><input class="join-input" type="text" id="username" maxlength="30" required>
 			<button class="dupl-btn">중복확인</button></td>
 		</tr>
 		<tr>
 			<td><span class="join-subtitle">비밀번호</span> <span class="startag">*</span></td>
-			<td><input class="join-input" type="password" id="password" maxlength="20"></td>
+			<td><input class="join-input" type="password" id="password" maxlength="20" required></td>
 		</tr>
 		<tr>
 			<td><span class="join-subtitle">비밀번호확인</span> <span class="startag">*</span></td>
-			<td><input class="join-input" type="password" id="passwordConfirm" maxlength="20"></td>
+			<td><input class="join-input" type="password" id="passwordConfirm" maxlength="20" required></td>
 		</tr>
 		<tr>
 			<td><span class="join-subtitle">닉네임</span> <span class="startag">*</span></td>
-			<td><input class="join-input" type="text" id="nickname" maxlength="30"></td>
+			<td><input class="join-input" type="text" id="nickname" maxlength="30" required></td>
 		</tr>
 		<tr>
 			<td><span class="join-subtitle">이메일주소</span> <span class="startag">*</span></td>
-			<td><input class="join-input" type="email" id="email" maxlength="50"></td>
+			<td><input class="join-input" type="email" id="email" maxlength="50" required></td>
 		</tr>
 	</table>
 	<div class="bottom-content1"><span class="startag">*</span> 표시는 필수 항목입니다.</div>
-	<div class="bottom-content2"><input type="checkbox" style="transform:scale(1.5); margin-right:10px;"><a href="#" style="color:#5C42D7; font-weight:bold;">이용약관</a> 및 개인정보수집 이용에 동의합니다.</div>
+	<div class="bottom-content2">
+		<input type="checkbox" style="transform:scale(1.5); margin-right:10px;" required>
+		<a href="/auth/policy" style="color:#5C42D7; font-weight:bold;">이용약관</a> 및 개인정보수집 이용에 동의합니다.
+	</div>
 	<button class="submit-btn" id="btn-save">가입</button>
 	<script src="/js/user.js"></script>
 	</form>

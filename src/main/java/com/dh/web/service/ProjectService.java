@@ -22,9 +22,6 @@ public class ProjectService {
 	
 	@Autowired
 	private ProjectReplyRepository projectReplyRepository;
-	
-	@Autowired
-	private UserRepository userRepository;
 
 	@Transactional
 	public void write(Project board, User user) {
@@ -63,23 +60,7 @@ public class ProjectService {
 
 	@Transactional
 	public void writeReply(ReplySaveRequestDto replySaveRequestDto) {
-		User user = userRepository.findById(replySaveRequestDto.getUserid())
-				.orElseThrow(()->{
-					return new IllegalArgumentException("댓글 작성 실패 : 사용자를 찾을 수 없습니다.");
-				});
-		
-		Project board = projectRepository.findById(replySaveRequestDto.getBoardid())
-				.orElseThrow(()->{
-					return new IllegalArgumentException("댓글 작성 실패 : 게시글 id를 찾을 수 없습니다.");
-				});
-		
-		ProjectReply reply = ProjectReply.builder()
-				.user(user)
-				.board(board)
-				.content(replySaveRequestDto.getContent())
-				.build();
-		
-		projectReplyRepository.save(reply);
+		projectReplyRepository.mSave(replySaveRequestDto.getUserid(), replySaveRequestDto.getBoardid(), replySaveRequestDto.getContent());
 	}
 
 	@Transactional

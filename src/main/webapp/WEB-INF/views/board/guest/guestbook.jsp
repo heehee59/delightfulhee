@@ -19,17 +19,27 @@
 	font-size:30px;
 	margin-top:100px;
 }
+.userinfo {
+	text-align:center;
+	margin-right:30px;
+}
 .user-pic {
 	border:1px solid #dddddd;
 	border-radius:400px 400px 400px 400px;
 	background:#dddddd;
 	width:100px;
 	height:100px;
-	margin-right:30px;
+	overflow:hidden;
 	margin-top:15px;
 }
+.user-imgthum {
+	width:100%;
+	height:100%;
+	object-fit:cover;
+}
 .user-nick {
-	margin-top:120px;
+	position:relative;
+	margin-top:25px;
 }
 .inputarea {
 	padding:10px;
@@ -106,17 +116,21 @@
 	<div class="guestbook-title">GUEST BOOK</div>
 	<!-- 방명록 입력 영역 시작 -->
 	<div class="wraper" style="padding-top:100px;">
-		<div class="user-pic">
-		<div class="user-nick">${principal.user.nickname }</div></div>
+		<div class="userinfo">
+			<div class="user-pic"><img src="${principal.user.profileImg }" class="user-imgthum"></div>
+			<div class="user-nick">${principal.user.nickname }</div>
+		</div>
 		<div class="inputarea"><textarea class="input-content" id="content"></textarea></div>
 		<button id="btn-save">등록</button>
 	</div>
 	<!-- 방명록 입력 영역 끝 -->
 	<!-- 방명록 출력 영역 시작 -->
 	<c:forEach var="board" items="${boards.content }">
-	<div style="padding-top:100px; margin-left:-30px; display:flex; justify-content:center;">
-		<div class="user-pic">
-		<div class="user-nick">${board.user.nickname }</div></div>
+	<div style="padding-top:100px; margin-left:-25px; display:flex; justify-content:center;">
+		<div class="userinfo">
+			<div class="user-pic"><img src="${board.user.profileImg }" class="user-imgthum"></div>
+			<div class="user-nick">${board.user.nickname }</div>
+		</div>
 		<div class="outputarea"><textarea id="output-content" readonly>${board.content }</textarea></div>
 		<input type="hidden" id="id" value="${board.id }">
 		<c:if test="${board.user.id == principal.user.id }">

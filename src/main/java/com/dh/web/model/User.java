@@ -45,5 +45,10 @@ public class User {
 	
 	@CreationTimestamp // = now()
 	private Timestamp date;
+	
+	@Column(nullable=true,length=300)
+	private String profileImg;
+	
+	private String oauth;
 
 }

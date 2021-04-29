@@ -22,9 +22,6 @@ public class StoryService {
 	
 	@Autowired
 	private StoryReplyRepository storyReplyRepository;
-	
-	@Autowired
-	private UserRepository userRepository;
 
 	@Transactional
 	public void write(Story board, User user) {
@@ -63,23 +60,7 @@ public class StoryService {
 
 	@Transactional
 	public void writeReply(ReplySaveRequestDto replySaveRequestDto) {
-		User user = userRepository.findById(replySaveRequestDto.getUserid())
-				.orElseThrow(()->{
-					return new IllegalArgumentException("댓글 작성 실패 : 사용자를 찾을 수 없습니다.");
-				});
-		
-		Story board = storyRepository.findById(replySaveRequestDto.getBoardid())
-				.orElseThrow(()->{
-					return new IllegalArgumentException("댓글 작성 실패 : 게시글 id를 찾을 수 없습니다.");
-				});
-		
-		StoryReply reply = StoryReply.builder()
-				.user(user)
-				.board(board)
-				.content(replySaveRequestDto.getContent())
-				.build();
-		
-		storyReplyRepository.save(reply);
+		storyReplyRepository.mSave(replySaveRequestDto.getUserid(), replySaveRequestDto.getBoardid(), replySaveRequestDto.getContent());
 	}
 
 	@Transactional

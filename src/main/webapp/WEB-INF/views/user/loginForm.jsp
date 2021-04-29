@@ -80,10 +80,11 @@
 	cursor:pointer;
 	font-family:'LotteMartDream';
 }
-.naver-btn {
+.facebook-btn {
 	outline:none;
 	border:2px solid black;
-	background:#2FD200;
+	background:#3B82E7;
+	color:white;
 	padding:5px;
 	width:280px;
 	cursor:pointer;
@@ -111,16 +112,16 @@
 		</table>
 		<div style="text-align:right;"><a href="#">아이디 찾기</a> ㅣ <a href="#">비밀번호 찾기</a></div>
 		<button id="btn-login" class="submit-btn">로그인</button><br>
-		<script src="/js/user.js"></script>
-		<button class="google-btn">구글 로그인</button><br>
-		<button class="kakao-btn">카카오 로그인</button><br>
-		<button class="naver-btn">네이버 로그인</button>
 		</form>
+		<button class="google-btn">구글 로그인</button><br>
+		<a href="https://kauth.kakao.com/oauth/authorize?client_id=89974d6a2a1cd94101d156d336bc541c&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code"><button class="kakao-btn">카카오 로그인</button></a><br>
+		<button class="facebook-btn">페이스북 로그인</button>
 		</div>
 	</div>
 </div>
 	<hr class="line">
 	<%@ include file="../layout/footer.jsp" %>
 </section>
+<script src="/js/user.js"></script>
 </body>
 </html>
