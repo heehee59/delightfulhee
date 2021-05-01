@@ -151,6 +151,11 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("/auth/google")
+	public String googleLogin() {
+		return "";
+	}
+	
 	@GetMapping("/mypage")
 	public String mypage(@AuthenticationPrincipal PrincipalDetail principal) {
 		return "user/mypage";

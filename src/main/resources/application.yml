@@ -30,6 +30,17 @@ spring:
     properties:
       hibernate.format_sql: true
 
+  security:
+   oauth2:
+    client:
+     registration:
+      google:
+       client-id: 39814873623-r6q3vrirc9tudt3srj1edsmr872qmcfu.apps.googleusercontent.com
+       client-secret: P9Q3jw61YXKJnlfO_RcuJ_uB
+       scope:
+       - email
+       - profile
+
   jackson:
     serialization:
       fail-on-empty-beans: false
