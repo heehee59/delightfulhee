@@ -92,8 +92,6 @@ local.properties
 *.tar.gz
 *.rar
 
-/src/main/resources/application.yml
-
 ### STS ###
 .apt_generated
 .classpath
