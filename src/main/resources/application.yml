@@ -22,7 +22,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false
@@ -40,6 +40,32 @@ spring:
        scope:
        - email
        - profile
+       
+      facebook:
+       client-id: 797119734333842
+       client-secret: 600ed7e64854b9b21b0c4fdd26832639
+       scope:
+       - email
+       - public_profile
+       
+      kakao:
+       client-id: 89974d6a2a1cd94101d156d336bc541c
+       client-secret: Dpby3u8a8Fd0oq6xA8Qlb5zKAmy5tnz7
+       redirect-uri: http://localhost:8080/login/oauth2/code/{registrationId}
+       authorization-grant-type: athorization_code
+       scope:
+       - account_email
+       - profile
+       client-authentication-method: POST
+       client-name: Kakao
+       
+     provider:
+      kakao:
+       authorization-uri: https://kauth.kakao.com/oauth/authorize
+       token-uri: https://kauth.kakao.com/oauth/token
+       user-info-uri: https://kapi.kakao.com/v2/user/me
+       user-name-attribute: id
+       
 
   jackson:
     serialization:

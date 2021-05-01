@@ -52,15 +52,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest()
 				.authenticated()
 			.and()
+				.logout()
+				.logoutSuccessUrl("/")
+			.and()
 				.formLogin()
 				.loginPage("/auth/loginForm")
 				.loginProcessingUrl("/auth/loginProc") // 스프링 시큐리티가 해당 url을 가로채서 대신 로그인 실행
-				.defaultSuccessUrl("/")
+				.defaultSuccessUrl("/")	
 			.and()
 				.oauth2Login()
 				.loginPage("/auth/loginForm")
 				.userInfoEndpoint()
 				.userService(principalOauth2UserService);
-}
+	}
 	
 }

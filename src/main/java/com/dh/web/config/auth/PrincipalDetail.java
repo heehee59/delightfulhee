@@ -64,10 +64,15 @@ public class PrincipalDetail implements UserDetails, OAuth2User {
 	@Override // 계정이 갖고 있는 권한 목록을 리턴
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<GrantedAuthority> collectors = new ArrayList<>();
-		collectors.add(()->{return "LEVEL_"+user.getLevel();});
+		collectors.add(()->{return "ROLE_"+user.getRole();});
 		return collectors;
 	}
-
+	
+	@Override
+	public Map<String, Object> getAttributes() {
+		return attributes;
+	}
+	
 	@Override
 	public String getName() {
 		return null;

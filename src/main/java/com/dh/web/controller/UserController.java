@@ -134,7 +134,7 @@ public class UserController {
 				.password(cosKey)
 				.email(kakaoProfile.getKakao_account().getEmail())
 				.nickname(kakaoProfile.getProperties().getNickname())
-				.profileImg(kakaoProfile.getProperties().getThumbnail_image())
+				.picture(kakaoProfile.getProperties().getThumbnail_image())
 				.oauth("kakao")
 				.build();
 		
