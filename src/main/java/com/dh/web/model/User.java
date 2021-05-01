@@ -50,5 +50,9 @@ public class User {
 	private String profileImg;
 	
 	private String oauth;
+	
+	private String provider;
+	private String providerId;
+	
 
 }
