@@ -80,6 +80,16 @@
 	cursor:pointer;
 	font-family:'LotteMartDream';
 }
+.facebook-btn {
+	outline:none;
+	border:2px solid black;
+	background:#3B82E7;
+	color:white;
+	padding:5px;
+	width:280px;
+	cursor:pointer;
+	font-family:'LotteMartDream';
+}
 </style>
 </head>
 <body>
@@ -105,6 +115,7 @@
 		</form>
 		<a href="/oauth2/authorization/google"><button class="google-btn">구글 로그인</button></a><br>
 		<a href="https://kauth.kakao.com/oauth/authorize?client_id=89974d6a2a1cd94101d156d336bc541c&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code"><button class="kakao-btn">카카오 로그인</button></a><br>
+		<a href="/oauth2/authorization/facebook"><button class="facebook-btn">페이스북 로그인</button></a>
 		</div>
 	</div>
 </div>

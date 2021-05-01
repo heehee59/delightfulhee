@@ -117,7 +117,7 @@
 	<!-- 방명록 입력 영역 시작 -->
 	<div class="wraper" style="padding-top:100px;">
 		<div class="userinfo">
-			<div class="user-pic"><img src="${principal.user.profileImg }" class="user-imgthum"></div>
+			<div class="user-pic"><img src="${principal.user.picture }" class="user-imgthum"></div>
 			<div class="user-nick">${principal.user.nickname }</div>
 		</div>
 		<div class="inputarea"><textarea class="input-content" id="content"></textarea></div>
@@ -128,7 +128,7 @@
 	<c:forEach var="board" items="${boards.content }">
 	<div style="padding-top:100px; margin-left:-25px; display:flex; justify-content:center;">
 		<div class="userinfo">
-			<div class="user-pic"><img src="${board.user.profileImg }" class="user-imgthum"></div>
+			<div class="user-pic"><img src="${board.user.picture }" class="user-imgthum"></div>
 			<div class="user-nick">${board.user.nickname }</div>
 		</div>
 		<div class="outputarea"><textarea id="output-content" readonly>${board.content }</textarea></div>

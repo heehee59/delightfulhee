@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dh.web.model.LevelType;
+import com.dh.web.model.Role;
 import com.dh.web.model.User;
 import com.dh.web.repository.UserRepository;
 
@@ -20,9 +20,7 @@ public class UserService {
 	
 	@Transactional(readOnly = true)
 	public User findUser(String username) {
-		User user = userRepository.findByUsername(username).orElseGet(()->{
-			return new User();
-		});
+		User user = userRepository.findByUsername(username);
 		return user;
 	}
 
@@ -31,7 +29,7 @@ public class UserService {
 		String rawPassword = user.getPassword();
 		String encPassword = encoder.encode(rawPassword);
 		user.setPassword(encPassword);
-		user.setLevel(LevelType.USER);
+		user.setRole(Role.USER);
 		userRepository.save(user);
 	}
 

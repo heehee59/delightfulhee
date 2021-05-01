@@ -41,18 +41,17 @@ public class User {
 	private String email;
 	
 	@Enumerated(EnumType.STRING) // ColumnDefault = "user"
-	private LevelType level;
+	private Role role;
 	
 	@CreationTimestamp // = now()
 	private Timestamp date;
 	
 	@Column(nullable=true,length=300)
-	private String profileImg;
+	private String picture;
 	
 	private String oauth;
 	
 	private String provider;
 	private String providerId;
 	
-
 }

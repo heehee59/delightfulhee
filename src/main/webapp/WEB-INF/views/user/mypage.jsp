@@ -53,6 +53,7 @@
 	border:none;
 	background:transparent;
 	font-size:14px;
+	width:250px;
 }
 .submit-btn {
 	outline:none;
@@ -99,7 +100,7 @@
 			<td><span class="mypage-subtitle">아이디</span></td>
 			<td><input class="mypage-input" type="text" id="username" value="${principal.user.username }" readonly>
 		</tr>
-		<c:if test="${empty principal.user.oauth }">
+		<c:if test="${empty principal.user.provider }">
 		<tr>
 			<td><span class="mypage-subtitle">새 비밀번호</span> <span class="startag">*</span></td>
 			<td><input class="mypage-input" type="password" id="password" maxlength="20"></td>
