@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.dh.web.config.auth.PrincipalDetail;
 import com.dh.web.config.auth.PrincipalDetailService;
+import com.dh.web.config.oauth.PrincipalOauth2UserService;
 
 @Configuration
 @EnableWebSecurity // 세 아노테이션이 세트
@@ -21,6 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private PrincipalDetailService principalDetailService;
+	
+	@Autowired
+	private PrincipalOauth2UserService principalOauth2UserService;
 	
 	@Bean
 	@Override
@@ -51,7 +55,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.formLogin()
 				.loginPage("/auth/loginForm")
 				.loginProcessingUrl("/auth/loginProc") // 스프링 시큐리티가 해당 url을 가로채서 대신 로그인 실행
-				.defaultSuccessUrl("/");
+				.defaultSuccessUrl("/")
+			.and()
+				.oauth2Login()
+				.loginPage("/auth/loginForm")
+				.userInfoEndpoint()
+				.userService(principalOauth2UserService);
 }
 	
 }
