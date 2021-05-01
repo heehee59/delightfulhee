@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Delightfulhee</title>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="39814873623-0u99tdrlq79jll5q3v7bbk1le2irpuve.apps.googleusercontent.com">
 <link rel="stylesheet" href="/css/reset.css">
 <link rel="stylesheet" href="/css/style.css">
 <style>
@@ -113,7 +115,16 @@
 		<div style="text-align:right;"><a href="#">아이디 찾기</a> ㅣ <a href="#">비밀번호 찾기</a></div>
 		<button id="btn-login" class="submit-btn">로그인</button><br>
 		</form>
-		<button class="google-btn">구글 로그인</button><br>
+		<button class="google-btn" data-onsucess="onSignIn">구글 로그인</button><br>
+		<script>
+			function onSignIn(googleUser) {
+			  var profile = googleUser.getBasicProfile();
+			  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			  console.log('Name: ' + profile.getName());
+			  console.log('Image URL: ' + profile.getImageUrl());
+			  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+			}
+		</script>
 		<a href="https://kauth.kakao.com/oauth/authorize?client_id=89974d6a2a1cd94101d156d336bc541c&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code"><button class="kakao-btn">카카오 로그인</button></a><br>
 		<button class="facebook-btn">페이스북 로그인</button>
 		</div>
