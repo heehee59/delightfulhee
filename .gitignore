@@ -112,7 +112,7 @@ local.properties
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
-!**/src/main/resouces/**.yml
+application.yml
 
 ### VS Code ###
 .vscode/
