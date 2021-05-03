@@ -22,6 +22,7 @@
 .userinfo {
 	text-align:center;
 	margin-right:30px;
+	margin-top:5px;
 }
 .user-pic {
 	border:1px solid #dddddd;
@@ -63,7 +64,7 @@
 	border:none;
 	background:#ededed;
 	border-radius:5px;
-	padding:5px;
+	padding:10px;
 	width:500px;
 	height:150px;
 	outline:none;
@@ -86,6 +87,7 @@
 	width:100px;
 	height:50px;
 	margin-top:118px;
+	margin-left:10px;
 }
 #btn-delete {
 	font-family:'LotteMartDream';
