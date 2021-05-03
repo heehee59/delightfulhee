@@ -22,7 +22,7 @@
 .policy-content {
 	text-align:left;
 	font-family:'Spoqa Han Sans Neo', 'sans-serif';
-	font-size:16px;
+	font-size:15px;
 	margin-bottom:80px;
 }
 .policy-subcontent {

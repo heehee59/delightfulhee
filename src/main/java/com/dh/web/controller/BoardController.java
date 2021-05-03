@@ -1,5 +1,11 @@
 package com.dh.web.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.UUID;
+
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dh.web.model.GuestBook;
 import com.dh.web.model.Project;
@@ -16,6 +26,7 @@ import com.dh.web.model.Story;
 import com.dh.web.service.GuestBookService;
 import com.dh.web.service.ProjectService;
 import com.dh.web.service.StoryService;
+import com.google.gson.JsonObject;
 
 @Controller
 public class BoardController {
@@ -61,6 +72,34 @@ public class BoardController {
 	@GetMapping("/auth/project/write")
 	public String projectWriteForm() {
 		return "board/project/project_writeForm";
+	}
+	
+	// project 글쓰기 - 파일 업로드
+	@PostMapping(value="/uploadSummernoteImageFile", produces="appliaction/json")
+	@ResponseBody
+	public JsonObject uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile) {
+		
+		JsonObject jsonObject = new JsonObject();
+		
+		String fileRoot = "D:\\summernote_image\\";
+		String originalFileName = multipartFile.getOriginalFilename();
+		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+		
+		String savedFileName = UUID.randomUUID()+extension;
+		
+		File targetFile = new File(fileRoot + savedFileName);
+		
+		try {
+			InputStream fileStream = multipartFile.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile);
+			jsonObject.addProperty("url", "/summernoteImage/"+savedFileName);
+			jsonObject.addProperty("responseCode", "success");
+		} catch (IOException e) {
+			FileUtils.deleteQuietly(targetFile);
+			jsonObject.addProperty("responseCode", "error");
+			e.printStackTrace();
+		}
+		return jsonObject;
 	}
 	
 	// project 글 상세보기 화면 요청

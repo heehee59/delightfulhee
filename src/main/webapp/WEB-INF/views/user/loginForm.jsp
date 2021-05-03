@@ -57,28 +57,24 @@
 	border:2px solid black;
 	background:transparent;
 	padding:5px;
-	width:280px;
+	width:260px;
 	cursor:pointer;
 	font-family:'LotteMartDream';
+}
+.btns {
+	margin-top:10px;
 }
 .google-btn {
 	outline:none;
 	border:2px solid black;
 	background:#CB5240;
 	padding:5px;
-	width:280px;
+	width:110px;
+	height:80px;
 	cursor:pointer;
 	font-family:'LotteMartDream';
 	color:white;
-}
-.kakao-btn {
-	outline:none;
-	border:2px solid black;
-	background:#FFEC27;
-	padding:5px;
-	width:280px;
-	cursor:pointer;
-	font-family:'LotteMartDream';
+	margin-right:30px;
 }
 .facebook-btn {
 	outline:none;
@@ -86,7 +82,8 @@
 	background:#3B82E7;
 	color:white;
 	padding:5px;
-	width:280px;
+	width:110px;
+	height:80px;
 	cursor:pointer;
 	font-family:'LotteMartDream';
 }
@@ -96,7 +93,7 @@
 <%@ include file="../layout/header.jsp" %>
 <section>
 <div class="container">
-	<div class="wraper" style="padding-top:100px;">
+	<div class="wraper">
 		<div class="container-login">
 		<div class="login-title">WELCOME</div>
 		<form class="login-form" action="/auth/loginProc" method="post">
@@ -113,9 +110,10 @@
 		<div style="text-align:right;"><a href="#">아이디 찾기</a> ㅣ <a href="#">비밀번호 찾기</a></div>
 		<button id="btn-login" class="submit-btn">로그인</button><br>
 		</form>
-		<a href="/oauth2/authorization/google"><button class="google-btn">구글 로그인</button></a><br>
-		<a href="https://kauth.kakao.com/oauth/authorize?client_id=89974d6a2a1cd94101d156d336bc541c&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code"><button class="kakao-btn">카카오 로그인</button></a><br>
+		<div class="btns">
+		<a href="/oauth2/authorization/google"><button class="google-btn">구글 로그인</button></a>
 		<a href="/oauth2/authorization/facebook"><button class="facebook-btn">페이스북 로그인</button></a>
+		</div>
 		</div>
 	</div>
 </div>

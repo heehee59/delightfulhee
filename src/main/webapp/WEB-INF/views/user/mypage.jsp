@@ -90,7 +90,7 @@
 <!-- header 영역 끝 -->
 <section>
 <div class="container">
-	<div class="wraper" style="padding-top:100px;">
+	<div class="wraper">
 	<div class="container-mypage">
 	<div class="mypage-title">MYPAGE</div>
 	<form class="mypage-form">

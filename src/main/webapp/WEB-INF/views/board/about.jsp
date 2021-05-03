@@ -12,8 +12,11 @@
 * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 .container {
 	font-size:15px;
+	text-align:center;
 }
 .about-title {
+	font-size:30px;
+	margin-top:100px;
 }
 .about-content {
 	text-align:left;
@@ -26,7 +29,8 @@
 <!-- header 영역 끝 -->
 <section>
 <div class="container">
-	<div class="wraper" style="padding-top:100px;">
+	<div class="about-title">ABOUT</div>
+	<div class="wraper">
 	<div class="about-title">개발자 소개</div>
 	<div class="about-content">
 		<div class="corevalue">

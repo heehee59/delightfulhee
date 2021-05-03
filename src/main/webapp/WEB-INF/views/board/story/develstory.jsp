@@ -24,10 +24,11 @@
 	background:black;
 }
 .story-table {
-	width:900px;
+	width:1100px;
+	line-height:35px;
 }
 .btn {
-	width:900px;
+	width:1100px;
 	text-align:right;
 	margin:auto;
 	padding-top:15px;
@@ -56,7 +57,7 @@
 <section>
 <div class="container">
 	<div class="story-title">DEVELOP. STORY</div>
-	<div class="wraper" style="padding-top:100px; line-height:35px;">
+	<div class="wraper">
 	<table class="story-table">
 		<tr>
 			<td colspan="5"><hr class="boardline" /></td>
