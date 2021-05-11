@@ -48,9 +48,7 @@ public class User {
 	
 	@Column(nullable=true,length=300)
 	private String picture;
-	
-	private String oauth;
-	
+
 	private String provider;
 	private String providerId;
 	
