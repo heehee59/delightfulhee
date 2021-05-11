@@ -30,6 +30,21 @@
 	font-size:30px;
 	margin-bottom:30px;
 }
+.user-pic {
+	border:1px solid #dddddd;
+	border-radius:400px 400px 400px 400px;
+	background:#dddddd;
+	width:100px;
+	height:100px;
+	overflow:hidden;
+	margin-bottom:30px;	
+	margin-left:150px;
+}
+.user-imgthum {
+	width:100%;
+	height:100%;
+	object-fit:cover;
+}
 .mypage-form {
 	justify-content:flex-start;
 	text-align:left;
@@ -92,7 +107,11 @@
 <div class="container">
 	<div class="wraper">
 	<div class="container-mypage">
+	<div style="margin-top:50px;">
 	<div class="mypage-title">MYPAGE</div>
+	<div class="user-pic">
+		<img src="${principal.user.picture }" class="user-imgthum">
+	</div>
 	<form class="mypage-form">
 	<input type="hidden" id="id" value="${principal.user.id }" />
 	<table class="mypage-table">
@@ -119,6 +138,7 @@
 	<button class="withdrawl-btn" id="btn-delete">회원 탈퇴</button>
 	<script src="/js/user.js"></script>
 	</form>
+	</div>
 	</div>
 	</div>
 </div>

@@ -60,9 +60,10 @@
 	width:260px;
 	cursor:pointer;
 	font-family:'LotteMartDream';
+	margin-top:20px;
 }
 .btns {
-	margin-top:10px;
+	margin-top:20px;
 }
 .google-btn {
 	outline:none;
@@ -95,6 +96,7 @@
 <div class="container">
 	<div class="wraper">
 		<div class="container-login">
+		<div style="margin-top:100px; margin-bottom:40px;">
 		<div class="login-title">WELCOME</div>
 		<form class="login-form" action="/auth/loginProc" method="post">
 		<table class="login-table">
@@ -107,12 +109,13 @@
 				<td><input class="login-input" type="password" name="password" maxlength="20" required></td>
 			</tr>
 		</table>
-		<div style="text-align:right;"><a href="#">아이디 찾기</a> ㅣ <a href="#">비밀번호 찾기</a></div>
+		<div style="margin-top:10px; text-align:right;"><a href="#">아이디 찾기</a> ㅣ <a href="#">비밀번호 찾기</a></div>
 		<button id="btn-login" class="submit-btn">로그인</button><br>
 		</form>
 		<div class="btns">
 		<a href="/oauth2/authorization/google"><button class="google-btn">구글 로그인</button></a>
 		<a href="/oauth2/authorization/facebook"><button class="facebook-btn">페이스북 로그인</button></a>
+		</div>
 		</div>
 		</div>
 	</div>

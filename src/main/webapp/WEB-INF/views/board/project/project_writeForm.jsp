@@ -66,10 +66,12 @@
 	</div>
 </div>
     <script>
-      $(".summernote").summernote({
-        tabsize: 2,
-        height: 400,
-        toolbar: [
+	$(".summernote").summernote({
+		tabsize: 2,
+		minHeight: 400,
+		maxHeight: 400,
+		focus: true,
+		toolbar: [
           ['style', ['style']],
           ['font', ['bold', 'underline', 'clear']],
           ['color', ['color']],
@@ -77,9 +79,30 @@
           ['table', ['table']],
           ['insert', ['link', 'picture', 'video']],
           ['view', ['fullscreen', 'codeview', 'help']]
-        ]
+		],
+		callbacks: {
+        	onImageUpload: function(files) {
+        		uploadSummernoteImageFile(files[0], this);
+        	}
+        }
       });
-    </script>
+      
+      /* 이미지 파일 업로드 */
+      function uploadSummernoteImageFile(file, editor) {
+    	  data = new FormData();
+    	  data.append("file", file);
+    	  $.ajax({
+    		  data: data,
+    		  type: "POST",
+    		  url: "/uploadSummernoteImageFile",
+    		  contentType: false,
+    		  processData: false,
+    		  success: function(data) {
+    			  $(editor).summernote("insertImage", data.url);
+    		  }
+    	  });
+      };
+      </script>
 <!-- footer 영역 시작 -->
 	<hr class="line">
 	<%@ include file="../../layout/footer.jsp" %>

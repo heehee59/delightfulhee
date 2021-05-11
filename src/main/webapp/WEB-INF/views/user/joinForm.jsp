@@ -100,6 +100,8 @@
 	text-align:right;
 }
 </style>
+<script>
+</script>
 </head>
 <body>
 <!-- header 영역 시작 -->
@@ -122,29 +124,30 @@
 	<table class="join-table">
 		<tr>
 			<td><span class="join-subtitle">아이디</span> <span class="startag">*</span></td>
-			<td><input class="join-input" type="text" id="username" maxlength="30" required>
-			<button class="dupl-btn">중복확인</button></td>
+			<td><input class="join-input" type="text" id="username" maxlength="30" autofocus="autofocus">
+			<button class="dupl-btn">중복확인</button>
+			<div id="chkValidation"></div></td>
 		</tr>
 		<tr>
 			<td><span class="join-subtitle">비밀번호</span> <span class="startag">*</span></td>
-			<td><input class="join-input" type="password" id="password" maxlength="20" required></td>
+			<td><input class="join-input" type="password" id="password" maxlength="20"></td>
 		</tr>
 		<tr>
 			<td><span class="join-subtitle">비밀번호확인</span> <span class="startag">*</span></td>
-			<td><input class="join-input" type="password" id="passwordConfirm" maxlength="20" required></td>
+			<td><input class="join-input" type="password" id="passwordConfirm" maxlength="20"></td>
 		</tr>
 		<tr>
 			<td><span class="join-subtitle">닉네임</span> <span class="startag">*</span></td>
-			<td><input class="join-input" type="text" id="nickname" maxlength="30" required></td>
+			<td><input class="join-input" type="text" id="nickname" maxlength="30"></td>
 		</tr>
 		<tr>
 			<td><span class="join-subtitle">이메일주소</span> <span class="startag">*</span></td>
-			<td><input class="join-input" type="email" id="email" maxlength="50" required></td>
+			<td><input class="join-input" type="email" id="email" maxlength="50"></td>
 		</tr>
 	</table>
 	<div class="bottom-content1"><span class="startag">*</span> 표시는 필수 항목입니다.</div>
 	<div class="bottom-content2">
-		<input type="checkbox" style="transform:scale(1.5); margin-right:10px;" required>
+		<input type="checkbox" id="policy" style="transform:scale(1.5); margin-right:10px;">
 		<a href="/auth/policy" style="color:#5C42D7; font-weight:bold;">이용약관</a> 및 개인정보수집 이용에 동의합니다.
 	</div>
 	<button class="submit-btn" id="btn-save">가입</button>

@@ -10,6 +10,22 @@
 <script src="/js/jquery.js"></script>
 <script src="/js/jquery.fadethis.min.js"></script>
 <script>$(window).fadeThis();</script>
+<script>
+prop: 86;
+const test = {
+		prop: 2021,
+		func: function() {
+			return this.prop;
+		},
+	prop: 54,
+	fnc2: function() {
+		return this.prop;
+	},
+};
+prop: 70;
+console.log(test.func2());
+
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Gugi:400');

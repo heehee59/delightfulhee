@@ -11,11 +11,14 @@
 <style>
 .container {
 	text-align:center;
+	font-size:15px;
 }
 .project-title {
-	font-size:30px;
-	margin:auto;
+	text-align:center;
 	margin-bottom:50px;
+	font-size:30px;
+	margin-top:100px;
+}
 }
 .list {
 	width:1200px;
@@ -29,18 +32,21 @@
 .listline .img {
 	width:300px;
 	hegiht:200px;
-	margin-left:40px;
-	margin-right:40px;
+	margin-left:30px;
+	margin-right:30px;
 }
 .listline .title {
 	text-align:left;
 	margin-top:15px;
 	margin-left:40px;
 	margin-right:40px;
+	font-size:15px;
 }
 .btn {
 	text-align:right;
-	margin-right:60px;
+	width:1100px;
+	margin:auto;
+	padding-top:15px;
 }
 .btn-write {
 	font-family:'LotteMartDream';
@@ -49,9 +55,6 @@
 	outline:none;
 	background:transparent;
 	cursor:pointer;
-}
-.pagination {
-	margin-top:50px;
 }
 .page-item {
 	display:inline;
@@ -65,7 +68,8 @@
 <section>
 <!-- 글 목록 부분 -->
 <div class="container">
-	<div style="padding-top:150px; text-align:center; font-size:15px;">
+	<div class="project-title">PROJECT</div>
+	<div class="wraper">
 	<div class="list">
 	<c:forEach var="board" items="${boards.content }">
 		<div class="listline">
@@ -75,29 +79,29 @@
 	</c:forEach>
 	<div class="btn"><a href="/auth/project/write"><button class="btn-write">글쓰기</button></a></div>
 	</div>
-<!-- 페이징 영역 시작 -->
-	<ul class="pagination">
-		<!-- 이전 버튼 활성화 -->
-		<c:choose>
-			<c:when test="${boards.first }"></c:when>
-			<c:otherwise>
-				<li class="page-item"><a href="?page=${boards.number-1 }">Prev</a></li>
-			</c:otherwise>
-		</c:choose>
-		<!-- 페이징 버튼 -->
-		<c:forEach var="pageNum" begin="${firstPage }" end="${lastPage }">
-			<li class="page-item"><a href="?page=${pageNum-1}">${pageNum }</a></li>
-		</c:forEach>
-		<!-- 다음 버튼 활성화 -->
-		<c:choose>
-		<c:when test="${boards.last }"></c:when>
-			<c:otherwise>
-				<li class="page-item"><a href="?page=${boards.number+1 }">Next</a></li>
-			</c:otherwise>
-		</c:choose>
-	</ul>
-<!-- 페이징 영역 끝 -->
 	</div>
+<!-- 페이징 영역 시작 -->
+<ul class="pagination">
+	<!-- 이전 버튼 활성화 -->
+	<c:choose>
+		<c:when test="${boards.first }"></c:when>
+		<c:otherwise>
+			<li class="page-item"><a href="?page=${boards.number-1 }">Prev</a></li>
+		</c:otherwise>
+	</c:choose>
+	<!-- 페이징 버튼 -->
+	<c:forEach var="pageNum" begin="${firstPage }" end="${lastPage }">
+		<li class="page-item"><a href="?page=${pageNum-1}">${pageNum }</a></li>
+	</c:forEach>
+	<!-- 다음 버튼 활성화 -->
+	<c:choose>
+	<c:when test="${boards.last }"></c:when>
+		<c:otherwise>
+			<li class="page-item"><a href="?page=${boards.number+1 }">Next</a></li>
+		</c:otherwise>
+	</c:choose>
+</ul>
+<!-- 페이징 영역 끝 -->
 </div>
 <!-- footer 영역 시작 -->
 <hr class="line">
