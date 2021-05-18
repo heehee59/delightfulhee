@@ -17,6 +17,8 @@ public class UserService {
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+
+	public boolean user;
 	
 	@Transactional(readOnly = true)
 	public User findUser(String username) {
@@ -28,6 +30,7 @@ public class UserService {
 	public void join(User user) {
 		String rawPassword = user.getPassword();
 		String encPassword = encoder.encode(rawPassword);
+		user.setPicture("'/images/defaultimg.png'");
 		user.setPassword(encPassword);
 		user.setRole(Role.USER);
 		userRepository.save(user);
@@ -40,7 +43,7 @@ public class UserService {
 		});
 		
 		// oauth 체크해서 소셜 로그인 사용자는 비밀번호 수정 로직을 타지 못하게 함
-		if(persistance.getOauth() == null || persistance.getOauth().equals("")) {			
+		if(persistance.getProvider() == null || persistance.getProvider().equals("")) {			
 			String rawPassword = user.getPassword();
 			String encPassword = encoder.encode(rawPassword);
 			persistance.setPassword(encPassword);
