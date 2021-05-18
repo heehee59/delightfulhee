@@ -73,8 +73,11 @@
 	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 .regdate {
-	margin-left:-40px;
-	margin-top:150px;
+	display:block;
+	position:relative;
+	text-align:right;
+	margin-top:-30px;
+	margin-right:15px;
 }
 #btn-save {
 	font-family:'LotteMartDream';
@@ -98,7 +101,44 @@
 	cursor:pointer;
 	width:40px;
 	height:20px;
-	margin-top:120px;
+}
+#btn-reply {
+	font-family:'LotteMartDream';
+	font-size:15px;
+	border:none;
+	outline:none;
+	background:transparent;
+	cursor:pointer;
+	width:40px;
+	height:20px;
+}
+.replyinsertarea {
+	margin-top:30px;
+	text-align:center;
+	display:none;
+	margin-left:280px;
+}
+#reply-insert {
+	resize:none;
+	background:transparent;
+	border:2px solid black;
+	background:transparent;
+	width:300px;
+	height:100px;
+	outline:none;
+	resize:none;	
+	font-size:15px;
+	font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+#btn-reply-save {
+	font-family:'LotteMartDream';
+	font-size:15px;
+	border:none;
+	outline:none;
+	background:transparent;
+	cursor:pointer;
+	width:40px;
+	height:20px;
 }
 .pagination {
 	margin-top:100px;
@@ -133,16 +173,39 @@
 			<div class="user-pic"><img src="${board.user.picture }" class="user-imgthum"></div>
 			<div class="user-nick">${board.user.nickname }</div>
 		</div>
-		<div class="outputarea"><textarea id="output-content" readonly>${board.content }</textarea></div>
-		<input type="hidden" id="id" value="${board.id }">
-		<c:if test="${board.user.id == principal.user.id }">
-			<button id="btn-delete">삭제</button>
-		</c:if>
-		<div class="regdate">
-		<fmt:parseDate var="regdate" value="${board.date }" pattern="yyyy-MM-dd" />
-		<fmt:formatDate pattern="yyyy-MM-dd" value="${regdate}" />
+		<div class="outputarea">
+			<textarea id="output-content" readonly>${board.content }</textarea>
+			<div class="regdate">
+				<fmt:parseDate var="regdate" value="${board.date }" pattern="yyyy-MM-dd" />
+				<fmt:formatDate pattern="yyyy-MM-dd" value="${regdate}" />
+			</div>
 		</div>
+		<input type="hidden" id="boardid" value="${board.id }">
+		<div style="display:block; margin-top:150px;">
+			<c:if test="${board.user.id == principal.user.id || principal.user.id == '3'}">
+				<button id="btn-delete">삭제</button></c:if>
+			<c:if test="${principal.user.id == '3' }">
+				<button id="btn-reply" onclick="reply(document.getElementById('replyinsertarea'))">답글</button>
+					<script>
+						function reply(insertmenu) {
+							var replyinsertarea = document.getElementById('replyinsertarea');
+							replyinsertarea.style.display = "none";
+							
+							insertmenu.style.display="block";
+						}
+					</script>
+				</c:if>
+		</div>
+	</div>	
+	<!-- 답글창 부분 출력 시작 -->
+	<!-- 답글창 부분 출력 끝 -->
+	<!-- 답글창 부분 입력 시작 -->
+	<div id="replyinsertarea" class="replyinsertarea">
+		<textarea id="reply-content"></textarea>
+		<input type="hidden" id="userid" value="${principal.user.id }" />
+		<button id="btn-reply-save">등록</button>
 	</div>
+	<!-- 답글창 부분 입력 끝 -->
 	</c:forEach>
 	<!-- 방명록 출력 영역 끝 -->
 <!-- 페이징 영역 시작 -->

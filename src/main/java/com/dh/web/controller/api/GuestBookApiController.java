@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dh.web.config.auth.PrincipalDetail;
+import com.dh.web.dto.ReplySaveRequestDto;
 import com.dh.web.dto.ResponseDto;
 import com.dh.web.model.GuestBook;
 import com.dh.web.service.GuestBookService;
@@ -26,10 +27,16 @@ public class GuestBookApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	} 
 	
-	@DeleteMapping("/api/guest/{id}")
+	@DeleteMapping("/api/guest/{boardid}")
 	public ResponseDto<Integer> deleteById(@PathVariable int id) {
 		guestService.delete(id);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); 
+	}
+	
+	@PostMapping("/api/guest/{boardid}/reply")
+	public ResponseDto<Integer> replySave(@RequestBody ReplySaveRequestDto replySaveRequestDto) {
+		guestService.writeReply(replySaveRequestDto);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
 	/*

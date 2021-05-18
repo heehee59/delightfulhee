@@ -38,13 +38,17 @@
 	display:inline-block;
 	position:relative;
 	float:right;
-	margin:50px 300px 0 0;
+	margin:50px 200px 0 100px;
 	font-size:18px;
 	line-height:30px;
+	text-align:left;
 }
 .subcontent {
 	display:inline-block;
 	margin-bottom:80px;
+}
+.corevalue {
+	text-align:center;
 }
 .corevalue li {
 	width:150px;
@@ -100,18 +104,20 @@
 	<div class="about-title">개발자 소개</div>
 	<hr class="subline" />
 	<div class="about-content">
-		<div class="pic">
-			<img src="/images/about/aboutimg.png">
-		</div>
-		<div class="profile">
-			엄희경, Heekyeong Eom<br>
-			93. 7. 2.<br>
-			INFJ.<br>
-			<br>
-			<span style="font-weight:bold;">Contact.</span><br>
-			github.com/heehee59<br>
-			mchell9999@gmail.com<br>
-			instagram.com/love_is_hee<br>
+		<div style="text-align:center;">
+			<div class="pic">
+				<img src="/images/about/aboutimg.png">
+			</div>
+			<div class="profile">
+				엄희경, Heekyeong Eom<br>
+				1993. 7. 2.<br>
+				INFJ.<br>
+				<br>
+				<span style="font-weight:bold;">Contact.</span><br>
+				github.com/heehee59<br>
+				mchell9999@gmail.com<br>
+				instagram.com/love_is_hee<br>
+			</div>
 		</div>
 	</div>
 	<div class="subcontent">
@@ -171,8 +177,8 @@
 <pre>
 index.jsp - 개발자 이미지 : pngtree https://kor.pngtree.com/
 about.jsp - 랩탑 이미지 : pngtree https://kor.pngtree.com/
-		핵심가치 이미지 : flaticon https://www.flaticon.com/
-		기술스택 이미지 : pixabay https://pixabay.com/ko/
+		 핵심가치 이미지 : flaticon https://www.flaticon.com/
+		 기술스택 이미지 : pixabay https://pixabay.com/ko/
 footer.jsp - e-mail, git, instagram 이미지 : flaticon https://www.flaticon.com/
 </pre>
 		</div>
