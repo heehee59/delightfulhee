@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 .detail {
 	width:1200px;
-	margin:auto;
+	font-size:15px;
 }
 .title {
 	font-size:30px;
@@ -33,11 +34,23 @@
 	margin-top:50px;
 	margin-bottom:30px;
 }
+.likes-img {
+	cursor:pointer;
+}
+.unlikes-img {
+	cursor:pointer;
+}
+.like {
+	float:left;
+	text-align:left;
+	margin-left:15px;
+	margin-top:70px;
+}
 .list-modi-del {
 	float:right;
 	text-align:right;
 	margin-right:70px;
-	margin-top:50px;
+	margin-top:70px;
 	margin-bottom:30px;
 }
 .btn {
@@ -98,6 +111,9 @@
 }
 .insertarea {
 	margin-top:70px;
+	text-align:left;
+	width:1000px;
+	padding-bottom:30px;
 }
 .reply-insert {
 	resize:none;
@@ -121,8 +137,8 @@
 	font-size:15px;
 	width:80px;
 	height:109px;
-	margin-left:5px;
 	display:inline-block;
+	float:right;
 }
 </style>
 </head>
@@ -135,7 +151,7 @@
 <section>
 <!-- 글 내용 영역 시작 -->
 <div class="container">
-	<div style="padding-top:100px; text-align:center; font-size:15px;">
+	<div class="wraper">
 	<div class="detail">
 	<div class="title">${board.title }</div>
 	<fmt:parseDate var="regdate" value="${board.date }" pattern="yyyy-MM-dd" />
@@ -143,7 +159,35 @@
 	<div class="writer">${board.user.nickname }</div>
 	<hr class="line">
 	<div class="content">${board.content }</div>
-	<div class="likes">좋아요</div>
+	<!-- 좋아요 영역 시작 -->
+	<c:choose>
+		<c:when test="${like_chk eq true }">
+			<div class="likes">
+				<div class="c__1 c__1${board.id}">
+					<input type="hidden" id="boardid" value="${board.id}" />
+					<input type="hidden" id="count" value="${fn:length(board.likes)}" />
+					<input type="hidden" id="check" value="-1" />
+					<img class="likes-img" src="/images/like.png">
+					<script src="/js/likes.js"></script>
+				</div>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="likes">
+				<div class="c__1 c__1${board.id}">
+					<input type="hidden" id="boardid" value="${board.id}" />
+					<input type="hidden" id="count" value="${fn:length(board.likes)}" />
+					<input type="hidden" id="check" value="1" />
+					<img class="unlikes-img" src="/images/unlike.png">
+					<script src="/js/likes.js"></script>
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
+	<div class="like${project.id }">
+		좋아요 <b>${fn:length(board.likes)}개</b>
+	</div>
+	<!-- 좋아요 영역 끝 -->
 	<c:if test="${board.user.id == principal.user.id }">
 	<div class="list-modi-del">
 		<a href="/auth/develstory/${board.id}/modify"><button class="btn">수정</button></a>
@@ -174,10 +218,12 @@
 			</li>
 		</ul>
 		</c:forEach>
+		<!-- 댓글 등록 시작 -->
 		<div class="insertarea">
 		<textarea id="reply-content" class="reply-insert" placeholder="댓글을 입력해주세요."></textarea>
 		<button id="btn-reply-save">등록</button>
 		</div>
+		<!-- 댓글 등록 끝 -->
 	</div>
 	</form>
 	<!-- 댓글 영역 끝 -->
