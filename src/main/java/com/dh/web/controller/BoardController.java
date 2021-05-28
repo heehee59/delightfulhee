@@ -104,8 +104,20 @@ public class BoardController {
 	
 	// project 글 상세보기 화면 요청
 	@GetMapping("/auth/project/{id}")
-	public String projectFindById(@PathVariable int id, Model model) {
+	public String projectFindById(@PathVariable int id, Model model, @PageableDefault(size=6, sort="id", direction=Sort.Direction.DESC) Pageable pageable) {
 		model.addAttribute("board", projectService.projectContent(id));
+
+		// 목록 출력을 위한 코드
+		Page<Project> list = projectService.projectList(pageable);
+		int nowPage = list.getPageable().getPageNumber();	// 현재 페이지
+		int totalPages = list.getTotalPages();	// 총 페이지 수
+		int pageBtn = 5;	// 표시 될 페이지 버튼 수
+		int firstPage = (nowPage/pageBtn)*pageBtn+1;
+		int lastPage = firstPage+pageBtn-1;
+		lastPage = totalPages < lastPage ? totalPages : lastPage;
+		model.addAttribute("boards", list);
+		model.addAttribute("firstPage", firstPage);
+		model.addAttribute("lastPage", lastPage);
 		return "board/project/project_detail";
 	}
 	
