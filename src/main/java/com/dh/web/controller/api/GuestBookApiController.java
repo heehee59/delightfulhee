@@ -27,23 +27,10 @@ public class GuestBookApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	} 
 	
-	@DeleteMapping("/api/guest/{boardid}")
+	@DeleteMapping("/api/guest/{id}")
 	public ResponseDto<Integer> deleteById(@PathVariable int id) {
 		guestService.delete(id);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); 
 	}
-	
-	@PostMapping("/api/guest/{boardid}/reply")
-	public ResponseDto<Integer> replySave(@RequestBody ReplySaveRequestDto replySaveRequestDto) {
-		guestService.writeReply(replySaveRequestDto);
-		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-	}
-	
-	/*
-	@PutMapping("/api/guest/{id}")
-	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Project board) {
-		boardService.update(id, board);
-		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-	}*/
 	
 }

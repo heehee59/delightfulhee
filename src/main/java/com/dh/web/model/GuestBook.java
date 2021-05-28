@@ -41,7 +41,4 @@ public class GuestBook {
 	@CreationTimestamp
 	private Timestamp date;
 	
-	@OneToMany(mappedBy="board", fetch=FetchType.EAGER)
-	private List<GuestBookReply> reply;
-	
 }
