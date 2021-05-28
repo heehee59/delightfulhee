@@ -8,11 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dh.web.dto.ReplySaveRequestDto;
 import com.dh.web.model.Story;
-import com.dh.web.model.StoryReply;
 import com.dh.web.model.User;
 import com.dh.web.repository.StoryReplyRepository;
 import com.dh.web.repository.StoryRepository;
-import com.dh.web.repository.UserRepository;
 
 @Service
 public class StoryService {

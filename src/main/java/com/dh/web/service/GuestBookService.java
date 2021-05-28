@@ -6,10 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dh.web.dto.ReplySaveRequestDto;
 import com.dh.web.model.GuestBook;
 import com.dh.web.model.User;
-import com.dh.web.repository.GuestBookReplyRepository;
 import com.dh.web.repository.GuestBookRepository;
 
 @Service
@@ -17,10 +15,6 @@ public class GuestBookService {
 	
 	@Autowired
 	private GuestBookRepository guestRepository;
-	
-	@Autowired
-	private GuestBookReplyRepository guestBookReplyRepository;
-
 	@Transactional
 	public void write(GuestBook board, User user) {
 		board.setUser(user);
@@ -37,19 +31,12 @@ public class GuestBookService {
 		guestRepository.deleteById(id);
 	}
 	
-	@Transactional
-	public void writeReply(ReplySaveRequestDto replySaveRequestDto) {
-		guestBookReplyRepository.mSave(replySaveRequestDto.getUserid(), replySaveRequestDto.getBoardid(), replySaveRequestDto.getContent());
-	}
-
-	/*
-	@Transactional
-	public void update(int id, GuestBook requestBoard) {
-		GuestBook board = guestRepository.findById(id)
+	@Transactional(readOnly = true)
+	public GuestBook guestbookContent(int id) {
+		return guestRepository.findById(id)
 				.orElseThrow(()->{
-					return new IllegalArgumentException("해당 글을 찾을 수 없습니다.");
+					return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다.");
 				});
-		board.setContent(requestBoard.getContent());
-	}*/
+	}
 
 }

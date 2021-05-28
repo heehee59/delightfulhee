@@ -118,7 +118,7 @@
 	display:none;
 	margin-left:280px;
 }
-#reply-insert {
+#reply-content {
 	resize:none;
 	background:transparent;
 	border:2px solid black;
@@ -180,7 +180,7 @@
 				<fmt:formatDate pattern="yyyy-MM-dd" value="${regdate}" />
 			</div>
 		</div>
-		<input type="hidden" id="boardid" value="${board.id }">
+		<input type="hidden" id="id" value="${board.id }">
 		<div style="display:block; margin-top:150px;">
 			<c:if test="${board.user.id == principal.user.id || principal.user.id == '3'}">
 				<button id="btn-delete">삭제</button></c:if>
