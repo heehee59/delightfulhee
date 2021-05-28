@@ -155,7 +155,6 @@
 	line-height:35px;
 }
 .btn {
-	width:1100px;
 	text-align:right;
 	margin:auto;
 	padding-top:15px;
@@ -263,7 +262,7 @@
 	</form>
 	<!-- 댓글 영역 끝 -->
 	<hr class="line">
-	<div style="text-align:right; margin-right:70px; margin-top:-15px; margin-bottom:50px;"><a href="/auth/develstory"><button class="btn">목록</button></a></div>
+	<div style="text-align:right; margin-right:20px; margin-top:-30px; margin-bottom:50px;"><a href="/auth/develstory"><button class="btn">목록</button></a></div>
 	<!-- 목록 출력 부분 시작 -->
 	<div class="storylist">
 			<table class="story-table">
@@ -297,7 +296,7 @@
 		</tr>
 	</table>
 	</div>
-	<div class="btn"><a href="/auth/develstory/write"><button class="btn-write">글쓰기</button></a></div>
+	<div style="text-align:right; margin:20px 20px 50px 0px;"><a href="/auth/develstory/write"><button class="btn-write">글쓰기</button></a></div>
 	<!-- 페이징 영역 시작 -->
 	<ul class="pagination">
 		<!-- 이전 버튼 활성화 -->

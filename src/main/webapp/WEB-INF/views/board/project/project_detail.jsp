@@ -140,6 +140,45 @@
 	display:inline-block;
 	float:right;
 }
+.projectlist {
+	width:1100px;
+	text-align:center;
+	margin-top:150px;
+}
+.listline {
+	display:block;
+	margin-bottom:80px;
+	display:inline-block;
+}
+.listline .img {
+	width:300px;
+	hegiht:200px;
+	margin-left:30px;
+	margin-right:30px;
+}
+.listline .title {
+	text-align:left;
+	margin-top:15px;
+	margin-left:40px;
+	margin-right:40px;
+	font-size:15px;
+}
+.btn {
+	text-align:right;
+	margin:auto;
+	padding-top:15px;
+}
+.btn-write {
+	font-family:'LotteMartDream';
+	font-size:15px;
+	border:none;
+	outline:none;
+	background:transparent;
+	cursor:pointer;
+}
+.page-item {
+	display:inline;
+}
 </style>
 </head>
 <body>
@@ -228,9 +267,42 @@
 	</form>
 	<!-- 댓글 영역 끝 -->
 	<hr class="line">
-	<div style="text-align:right; margin-right:70px; margin-top:-15px; margin-bottom:50px;"><a href="/auth/project"><button class="btn">목록</button></a></div>
+	<div style="text-align:right; margin-right:70px; margin-top:-30px; margin-bottom:50px;"><a href="/auth/project"><button class="btn">목록</button></a></div>
+	<!-- 목록 부분 출력 시작 -->
+	<div class="projectlist">
+		<c:forEach var="board" items="${boards.content }">
+		<div class="listline">
+				<div class="img"><a href="/auth/project/${board.id }"><img src="/images/tmp.jpg"></a></div>
+				<div class="title"><a href="/auth/project/${board.id }">${board.title }</a></div>
+		</div>
+		</c:forEach>
+		<div style="text-align:right; margin:20px 20px 50px 0px;"><a href="/auth/project/write"><button class="btn-write">글쓰기</button></a></div>
+		<!-- 페이징 영역 시작 -->
+		<ul class="pagination">
+			<!-- 이전 버튼 활성화 -->
+			<c:choose>
+				<c:when test="${boards.first }"></c:when>
+				<c:otherwise>
+					<li class="page-item"><a href="?page=${boards.number-1 }">Prev</a></li>
+				</c:otherwise>
+			</c:choose>
+			<!-- 페이징 버튼 -->
+			<c:forEach var="pageNum" begin="${firstPage }" end="${lastPage }">
+				<li class="page-item"><a href="?page=${pageNum-1}">${pageNum }</a></li>
+			</c:forEach>
+			<!-- 다음 버튼 활성화 -->
+			<c:choose>
+			<c:when test="${boards.last }"></c:when>
+				<c:otherwise>
+					<li class="page-item"><a href="?page=${boards.number+1 }">Next</a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+		<!-- 페이징 영역 끝 -->
+	<!-- 목록 부분 출력 끝 -->
 	</div>
 	</div>
+</div>
 </div>
 <script src="/js/project.js"></script>
 <!-- footer 영역 시작 -->
