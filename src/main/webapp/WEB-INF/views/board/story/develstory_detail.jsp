@@ -140,6 +140,41 @@
 	display:inline-block;
 	float:right;
 }
+.storylist {
+	text-align:center;
+	margin-top:150px;
+}
+.boardline {
+	border:2px;
+	height:2px;
+	background:black;
+}
+.story-table {
+	margin:auto;
+	width:1100px;
+	line-height:35px;
+}
+.btn {
+	width:1100px;
+	text-align:right;
+	margin:auto;
+	padding-top:15px;
+}
+.btn-write {
+	font-family:'LotteMartDream';
+	font-size:15px;
+	border:none;
+	outline:none;
+	background:transparent;
+	cursor:pointer;
+}
+.pagination {
+	margin-top:50px;
+	padding-bottom:50px;
+}
+.page-item {
+	display:inline;
+}
 </style>
 </head>
 <body>
@@ -229,6 +264,63 @@
 	<!-- 댓글 영역 끝 -->
 	<hr class="line">
 	<div style="text-align:right; margin-right:70px; margin-top:-15px; margin-bottom:50px;"><a href="/auth/develstory"><button class="btn">목록</button></a></div>
+	<!-- 목록 출력 부분 시작 -->
+	<div class="storylist">
+			<table class="story-table">
+		<tr>
+			<td colspan="5"><hr class="boardline" /></td>
+		</tr>
+		<tr>
+			<td>글 번호</td>
+			<td>제목</td>
+			<td>작성자</td>
+			<td>작성일</td>
+			<td>조회수</td>
+		</tr>
+		<tr>
+			<td colspan="5"><hr class="boardline" /></td>
+		</tr>
+		<tr>
+		<c:forEach var="board" items="${boards.content }">
+			<td>${board.id }</td>
+			<td style="width:500px;"><a href="/auth/develstory/${board.id}">${board.title }</a></td>
+			<td>${board.user.nickname }</td>
+			<td>
+			<fmt:parseDate var="regdate" value="${board.date }" pattern="yyyy-MM-dd" />
+			<fmt:formatDate pattern="yyyy-MM-dd" value="${regdate}" />
+			</td>
+			<td>${board.viewcnt }</td>
+		</c:forEach>
+		</tr>
+		<tr>
+			<td colspan="5"><hr class="boardline" /></td>		
+		</tr>
+	</table>
+	</div>
+	<div class="btn"><a href="/auth/develstory/write"><button class="btn-write">글쓰기</button></a></div>
+	<!-- 페이징 영역 시작 -->
+	<ul class="pagination">
+		<!-- 이전 버튼 활성화 -->
+		<c:choose>
+			<c:when test="${boards.first }"></c:when>
+			<c:otherwise>
+				<li class="page-item"><a href="?page=${boards.number-1 }">Prev</a></li>
+			</c:otherwise>
+		</c:choose>
+		<!-- 페이징 버튼 -->
+		<c:forEach var="pageNum" begin="${firstPage }" end="${lastPage }">
+			<li class="page-item"><a href="?page=${pageNum-1}">${pageNum }</a></li>
+		</c:forEach>
+		<!-- 다음 버튼 활성화 -->
+		<c:choose>
+		<c:when test="${boards.last }"></c:when>
+			<c:otherwise>
+				<li class="page-item"><a href="?page=${boards.number+1 }">Next</a></li>
+			</c:otherwise>
+		</c:choose>
+	</ul>
+	<!-- 페이징 영역 끝 -->
+	<!-- 목록 출력 부분 끝 -->
 	</div>
 	</div>
 </div>
